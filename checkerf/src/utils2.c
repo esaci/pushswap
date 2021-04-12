@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libcheck.h"
+#include "../bibz/libcheck.h"
 
 bool	checker_nbr(char *nbr)
 {

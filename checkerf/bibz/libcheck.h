@@ -1,7 +1,7 @@
 #ifndef LIBCHECK_H
 # define LIBCHECK_H
 
-#include "../fct/libft/libft.h"
+#include "../../fct/libft/libft.h"
 
 typedef struct	s_stack
 {
