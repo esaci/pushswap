@@ -12,7 +12,7 @@
 
 #include "../bibz/libcheck.h"
 
-/* void		game_init(int argc, char **argv, t_game *game)
+void		game_init(int argc, char **argv, t_game *game)
 {
 	int		i;
 
@@ -21,7 +21,7 @@
 		game->flag[i++] = 0;
 	game->str = NULL;
 	game->fd = -1;
-	if (!check_args(argc, argv, &pars))
+	if (!checker(argc, argv, &pars))
 	{
 		write(2, "Wrong options\n", 14);
 		exit(1);
@@ -37,16 +37,14 @@
 	game->size = argc - 1 - game->nb_opt;
 	game->a.size = game->size;
 	return (pars);
-} */
+}
 
-int			main(int argc, char **argv)
+int			main(int argc, char *argv)
 {
     t_game game;
 
-    if (argc >= 2 && *argv != NULL)
-		return 1;
-	return 2;
-	/* {
-        game_init(argc, argv, &game); */
+    if (argc >= 2)
+	{
+        game_init(argc, argv, &game);
 
 }

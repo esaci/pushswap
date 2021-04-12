@@ -20,5 +20,6 @@ typedef struct	s_game
 	t_stack		b;
 }				t_game;
 
-void        ft_lecteur(char *inst, t_stack *a, t_stack *b);
+void			ft_lecteur(char *inst, t_stack *a, t_stack *b);
+int				checker(int argc, char **argv, t_game *game);
 #endif
