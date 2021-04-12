@@ -1,4 +1,4 @@
-#include "libcheck.h"
+#include "../bibz/libcheck.h"
 
 void swap(t_stack *stack)
 {
@@ -59,30 +59,30 @@ void reverserotate(t_stack *stack)
 
 void ft_lecteur(char *inst, t_stack *a, t_stack *b)
 {
-	if (!ft_strcmp(inst, "sa"))
+	if (!ft_strncmp(inst, "sa", 2))
 		return (swap(a));
-	else if (!ft_strcmp(inst, "sb"))
+	else if (!ft_strncmp(inst, "sb", 2))
 		return (swap(b));
-	else if (!ft_strcmp(inst, "pa"))
+	else if (!ft_strncmp(inst, "pa", 2))
 		return (push(b, a));
-	else if (!ft_strcmp(inst, "ra"))
+	else if (!ft_strncmp(inst, "ra", 2))
 		return (rotate(a));
-	else if (!ft_strcmp(inst, "rb"))
+	else if (!ft_strncmp(inst, "rb", 2))
 		return (rotate(b));
-	else if (!ft_strcmp(inst, "pb"))
+	else if (!ft_strncmp(inst, "pb", 2))
 		return (push(a, b));
-	else if (!ft_strcmp(inst, "rr"))
-	{
-		rotate(a);
-		return (rotate(b));
-	}
-	else if (!ft_strcmp(inst, "rra"))
+	else if (!ft_strncmp(inst, "rra", 3))
 		return (reverserotate(a));
-	else if (!ft_strcmp(inst, "rrb"))
+	else if (!ft_strncmp(inst, "rrb", 3))
 		return (reverserotate(b));
-	else if (!ft_strcmp(inst, "rrr"))
+	else if (!ft_strncmp(inst, "rrr", 3))
 	{
 		reverserotate(a);
 		reverserotate(b);
+	}
+	else if (!ft_strncmp(inst, "rr", 2))
+	{
+		rotate(a);
+		return (rotate(b));
 	}
 }

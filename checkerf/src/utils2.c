@@ -12,7 +12,7 @@
 
 #include "../bibz/libcheck.h"
 
-bool	checker_nbr(char *nbr)
+/* bool	checker_nbr(char *nbr)
 {
 	int		count1;
 	int		signe;
@@ -62,4 +62,4 @@ int		checker(int argc, char **argv, t_game *game)
 	}
 	pars->nb_opt = count1 - 1;
 	return (true);
-}
+} */
