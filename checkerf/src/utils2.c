@@ -58,7 +58,7 @@ int		*readlist(int argc, char **argv, int count)
 	i = 1 + count;
 	while (i < argc)
 	{
-		if (argv[i][0] == 0 || !checker(argv[i]))
+		if (argv[i][0] == 0 || !c_int(argv[i]))
 			return (0);
 		i++;
 	}

@@ -21,7 +21,7 @@ void		game_init(int argc, char **argv, t_game *game)
 		game->flag[i++] = 0;
 	game->str = NULL;
 	game->fd = -1;
-	if (!checker(argc, argv, &game))
+	if (!checker(argc, argv, game))
 	{
 		write(2, "Mauvaises Options\n", 14);
 		exit(1);
@@ -44,14 +44,37 @@ void		game_init(int argc, char **argv, t_game *game)
 	}
 }
 
-int			main(int argc, char *argv)
+int			doublon_int(t_stack *a)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < (int)a->size)
+	{
+		j = i + 1;
+		while (j < (int)a->size)
+		{
+			if (a->list[i] == a->list[j])
+			{
+				free(a->list);
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int			main(int argc, char **argv)
 {
     t_game game;
 
     if (argc >= 2)
 	{
         game_init(argc, argv, &game);
-		if (!game.a.ptr || !checker(&game.a))
+		if (!game.a.ptr || !doublon_int(game.a))
 		{
 			write(2, "Error\n", 6);
 			return (1);
@@ -63,5 +86,4 @@ int			main(int argc, char *argv)
 		free(game.b.ptr);
 	}
 	return (0);
-}
 }

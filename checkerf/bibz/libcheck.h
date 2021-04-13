@@ -2,6 +2,10 @@
 # define LIBCHECK_H
 
 #include "../../fct/libft/libft.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <stdio.h>
 
 typedef struct	s_stack
 {
@@ -22,4 +26,6 @@ typedef struct	s_game
 
 void			ft_lecteur(char *inst, t_stack *a, t_stack *b);
 int				checker(int argc, char **argv, t_game *game);
+int				*readlist(int argc, char **argv, int count);
+int				c_int(char *nbr);
 #endif
