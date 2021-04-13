@@ -18,6 +18,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRC =		$(SRCD)/utils2.c \
 			$(SRCD)/utils.c \
+			$(SRCD)/ft_ch.c \
 
 OBJ = $(SRC:.c=.o)
 

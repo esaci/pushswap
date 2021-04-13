@@ -30,7 +30,7 @@ void		game_init(int argc, char **argv, t_game *game)
 		game->fd = open(game->str, O_RDONLY);
 	if (game->fd < 0)
 	{
-		write(2, "Fichier non lu\n", 11);
+		write(2, "Fichier non lu\n", 15);
 		exit(1);
 	}
 	game->a.ptr = readlist(argc, argv, game->count);
@@ -50,14 +50,14 @@ int			doublon_int(t_stack *a)
 	int		j;
 
 	i = 0;
-	while (i < (int)a->size)
+	while (i < (int)a->len)
 	{
 		j = i + 1;
-		while (j < (int)a->size)
+		while (j < (int)a->len)
 		{
-			if (a->list[i] == a->list[j])
+			if (a->ptr[i] == a->ptr[j])
 			{
-				free(a->list);
+				free(a->ptr);
 				return (0);
 			}
 			j++;
@@ -74,12 +74,13 @@ int			main(int argc, char **argv)
     if (argc >= 2)
 	{
         game_init(argc, argv, &game);
-		if (!game.a.ptr || !doublon_int(game.a))
+		if (!game.a.ptr || !doublon_int(&game.a))
 		{
 			write(2, "Error\n", 6);
 			return (1);
 		}
 		game.b.len = 0;
+		ft_ch(&pars);
 		if (game.fd > 0)
 			close(game.fd);
 		free(game.a.ptr);
