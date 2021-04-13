@@ -12,10 +12,10 @@ typedef struct	s_stack
 typedef struct	s_game
 {
 	int			flag[4];
+	int			count;
 	int			fd;
 	char		*str;
 	size_t		size;
-	size_t		nb_opt;
 	t_stack		a;
 	t_stack		b;
 }				t_game;
