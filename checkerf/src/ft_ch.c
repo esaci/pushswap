@@ -12,20 +12,16 @@
 
 #include "../bibz/libcheck.h"
 
-char	*rempliractio(char action[11][4])
+char	*listeur(char *list, int len)
 {
-	action[0] = "sa";
-	action[1] = "sb";
-	action[2] = "ss";
-	action[3] = "pa";
-	action[4] = "pb";
-	action[5] = "ra";
-	action[6] = "rb";
-	action[7] = "rr";
-	action[8] = "rra";
-	action[9] = "rrb";
-	action[10] = "rrr";
-}
+	char *list2;
+
+	if (!(list2 = malloc(sizeof(char) * (len * 4 + 1))))
+	{
+		write(1, "Erreur malloc\n", 14);
+		exit(1);
+	}
+
 
 int		checkaction(char *line)
 {
@@ -74,7 +70,7 @@ void	ft_ch(t_game *game)
 			free(line);
 			return ;
 		}
-		listeur(list, len);
+		list = listeur(list, len, line);
 		len++;
 	}
 	apply_moves(list, game);
