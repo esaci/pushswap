@@ -2,6 +2,7 @@
 # define LIBCHECK_H
 
 #include "../../fct/libft/libft.h"
+#include "../../fct/GNL/get_next_line.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -28,4 +29,5 @@ void			ft_lecteur(char *inst, t_stack *a, t_stack *b);
 int				checker(int argc, char **argv, t_game *game);
 int				*readlist(int argc, char **argv, int count);
 int				c_int(char *nbr);
+void			ft_ch(t_game *game);
 #endif

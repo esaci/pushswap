@@ -20,7 +20,7 @@ void		game_init(int argc, char **argv, t_game *game)
 	while (i < 4)
 		game->flag[i++] = 0;
 	game->str = NULL;
-	game->fd = -1;
+	game->fd = 0;
 	if (!checker(argc, argv, game))
 	{
 		write(2, "Mauvaises Options\n", 14);
@@ -80,7 +80,7 @@ int			main(int argc, char **argv)
 			return (1);
 		}
 		game.b.len = 0;
-		ft_ch(&pars);
+		ft_ch(&game);
 		if (game.fd > 0)
 			close(game.fd);
 		free(game.a.ptr);

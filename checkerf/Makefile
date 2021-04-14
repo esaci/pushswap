@@ -10,6 +10,8 @@ CUBD= bibz/libcheck.a
 
 LIBFTD = ../fct/libft/
 
+GNL = ../fct/GNL
+
 INCL = bibz
 
 COMPILE = gcc
@@ -19,6 +21,8 @@ CFLAGS = -Wall -Wextra -Werror
 SRC =		$(SRCD)/utils2.c \
 			$(SRCD)/utils.c \
 			$(SRCD)/ft_ch.c \
+			$(GNL)/get_next_line.c \
+			$(GNL)/get_next_line_utils.c \
 
 OBJ = $(SRC:.c=.o)
 
