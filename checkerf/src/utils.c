@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esaci <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/15 12:09:36 by esaci             #+#    #+#             */
+/*   Updated: 2021/04/15 12:09:43 by esaci            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../bibz/libcheck.h"
 
 void swap(t_stack *stack)
@@ -57,32 +69,32 @@ void reverserotate(t_stack *stack)
 	stack->ptr[i] = temp;
 }
 
-void ft_lecteur(char *inst, t_stack *a, t_stack *b)
+void ft_lecteur(char *inst, t_game *game)
 {
 	if (!ft_strncmp(inst, "sa", 2))
-		return (swap(a));
+		return (swap(&game->a));
 	else if (!ft_strncmp(inst, "sb", 2))
-		return (swap(b));
+		return (swap(&game->b));
 	else if (!ft_strncmp(inst, "pa", 2))
-		return (push(b, a));
+		return (push(&game->b, &game->a));
 	else if (!ft_strncmp(inst, "ra", 2))
-		return (rotate(a));
+		return (rotate(&game->a));
 	else if (!ft_strncmp(inst, "rb", 2))
-		return (rotate(b));
+		return (rotate(&game->b));
 	else if (!ft_strncmp(inst, "pb", 2))
-		return (push(a, b));
+		return (push(&game->a, &game->b));
 	else if (!ft_strncmp(inst, "rra", 3))
-		return (reverserotate(a));
+		return (reverserotate(&game->a));
 	else if (!ft_strncmp(inst, "rrb", 3))
-		return (reverserotate(b));
+		return (reverserotate(&game->b));
 	else if (!ft_strncmp(inst, "rrr", 3))
 	{
-		reverserotate(a);
-		reverserotate(b);
+		reverserotate(&game->a);
+		reverserotate(&game->b);
 	}
 	else if (!ft_strncmp(inst, "rr", 2))
 	{
-		rotate(a);
-		return (rotate(b));
+		rotate(&game->a);
+		return (rotate(&game->b));
 	}
 }

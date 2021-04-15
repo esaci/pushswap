@@ -18,7 +18,8 @@ COMPILE = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC =		$(SRCD)/utils2.c \
+SRC =		$(SRCD)/utils3.c \
+			$(SRCD)/utils2.c \
 			$(SRCD)/utils.c \
 			$(SRCD)/ft_ch.c \
 			$(GNL)/get_next_line.c \
