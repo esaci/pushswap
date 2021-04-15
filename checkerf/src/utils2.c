@@ -14,8 +14,15 @@
 
 int		c_int(char *nbr)
 {
-	if (ft_strncmp(ft_itoa(ft_atoi(nbr)), nbr, ft_strlen(nbr)))
-		return(0);
+	char	*temp;
+
+	temp = ft_itoa(ft_atoi(nbr));
+	if (ft_strncmp(temp, nbr, ft_strlen(nbr)))
+	{
+		free(temp);
+		return (0);
+	}
+	free(temp);
 	return (1);
 }
 

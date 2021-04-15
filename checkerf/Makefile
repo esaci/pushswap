@@ -39,7 +39,7 @@ $(NAME) : $(OBJ) $(SRCD)/main.c
 		ar rc $(CUBD) $(OBJ)
 		/bin/rm -f $(LIBFT)
 		ranlib $(CUBD)
-		$(COMPILE) -g3 -fsanitize=address -o $(NAME) $(SRCD)/main.c  $(CUBD) -I$(INCL)
+		$(COMPILE) -o $(NAME) $(SRCD)/main.c  $(CUBD) -I$(INCL)
 clean:
 	rm -rf $(OBJ)
 	rm -rf objects

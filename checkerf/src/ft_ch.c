@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ch.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esaci <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: esaci <esaci@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 13:52:13 by esaci             #+#    #+#             */
-/*   Updated: 2021/04/13 13:52:15 by esaci            ###   ########.fr       */
+/*   Updated: 2021/04/15 14:03:43 by esaci            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ int		*listeur(int *list, int len,char *line, char **action)
 	/* printf("okk laction %s soit %d dans %d et len %d\n", action[y], y, i, len); */
 	list2[i] = y;
 	list2[++i] = 0;
-	if (len == 0)
-		free(list);
+	free(list);
 	return (list2);
 }
 
@@ -64,18 +63,53 @@ char	**createaction()
 		}
 		i++;
 	}
-	action[0] = "sa";
-	action[1] = "sb";
-	action[2] = "ss";
-	action[3] = "pa";
-	action[4] = "pb";
-	action[5] = "ra";
-	action[6] = "rb";
-	action[7] = "rr";
-	action[8] = "rra";
-	action[9] = "rrb";
-	action[10] = "rrr";
+	action[0][0] = 's';
+	action[0][1] = 'a';
+	action[0][2] = 0;
+	action[1][0] = 's';
+	action[1][1] = 'b';
+	action[1][2] = 0;
+	action[2][0] = 's';
+	action[2][1] = 's';
+	action[2][2] = 0;
+	action[3][0] = 'p';
+	action[3][1] = 'a';
+	action[3][2] = 0;
+	action[4][0] = 'p';
+	action[4][1] = 'b';
+	action[4][2] = 0;
+	action[5][0] = 'r';
+	action[5][1] = 'a';
+	action[5][2] = 0;
+	action[6][0] = 'r';
+	action[6][1] = 'b';
+	action[6][2] = 0;
+	action[7][0] = 'r';
+	action[7][1] = 'r';
+	action[7][2] = 0;
+	action[8][0] = 'r';
+	action[8][1] = 'r';
+	action[8][2] = 'a';
+	action[8][3] = 0;
+	action[9][0] = 'r';
+	action[9][1] = 'r';
+	action[9][2] ='b';
+	action[9][3] = 0;
+	action[10][0] = 'r';
+	action[10][1] = 'r';
+	action[10][2] = 'r';
+	action[10][3] = 0;
 	return (action);
+}
+
+void	freeaction(char **action)
+{
+	int		i;
+
+	i = 0;
+	while (i < 11)
+		free(action[i++]);
+	free(action);
 }
 
 int		checkaction(char *line, char **action)
@@ -110,7 +144,6 @@ void	ft_ch(t_game *game)
 	char		**action;
 	int			*list;
 	int			len;
-/* 	int			i; */
 
 	len = 0;
 	action = createaction();
@@ -130,10 +163,14 @@ void	ft_ch(t_game *game)
 		}
 		list = listeur(list, len, line, action);
 		len++;
+		free(line);
 	}
+	free(line);
 	applications(list, game, action, len);
+	free(list);
 	if (is_good(game) > 0)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
+	freeaction(action);
 }
