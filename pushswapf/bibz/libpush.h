@@ -12,6 +12,11 @@ typedef struct	s_stack
 {
 	int			*ptr;
 	size_t		len;
+	int			max;
+	int			min;
+	int			prem;
+	int			dern;
+	int			flag;
 }				t_stack;
 
 typedef struct	s_game
@@ -25,10 +30,7 @@ typedef struct	s_game
 	t_stack		b;
 }				t_game;
 
-void			ft_lecteur(char *inst, t_game *game);
-int				checker(int argc, char **argv, t_game *game);
-int				*init_ptr(int argc, char **argv, int count);
-int				c_int(char *nbr);
-void			ft_ch(t_game *game);
-int				is_good(t_game *game);
+void		stack_init(t_stack *s);
+
+
 #endif

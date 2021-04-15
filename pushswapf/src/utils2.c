@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esaci <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: esaccount1 <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 14:17:12 by esaci             #+#    #+#             */
 /*   Updated: 2021/04/12 14:17:15 by esaci            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../bibz/libcheck.h"
+#include "../bibz/libpush.h"
 
 int		c_int(char *nbr)
 {
@@ -56,7 +56,7 @@ int		checker(int argc, char **argv, t_game *game)
 	return (1);
 }
 
-int		*init_ptr(int argc, char **argv, int count)
+int		*readlist(int argc, char **argv, int count)
 {
 	int		*ptr;
 	int		i;
