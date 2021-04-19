@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 
-#include "../bibz/libcheck.h"
+#include "../bibz/libpush.h"
 
 int		is_good(t_game *game)
 {

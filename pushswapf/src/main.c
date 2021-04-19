@@ -12,6 +12,20 @@
 
 #include "../bibz/libpush.h"
 
+void	algo(t_game *game)
+{
+	stack_init(&game->a);
+	if (game->a.len == 2)
+		updatelist(game, "sa");
+	else if (game->a.len == 3)
+		tech_trois(game);
+/* 	else if (game->a.len <= 15)
+		tech_mquinze(game->a, game->b);
+	else
+		tech_pquinze(game->a, game->b);
+	manage_disp(0, 1); */
+}
+
 int			doublon_int(t_stack *a)
 {
 	int		i;
@@ -35,20 +49,6 @@ int			doublon_int(t_stack *a)
 	return (1);
 }
 
-void	algo(t_game game)
-{
-	update(game->a);
-	if (game->a.size < 3)
-		swap(game->a);
-	else if (game->a.size == 3)
-		manage_three(game->a);
-	else if (game->a.size <= 15)
-		manage_few(game->a, game->b);
-	else
-		manage_most(game->a, game->b);
-	manage_disp(0, 1);
-}
-
 void		game_init(int argc, char **argv, t_game *game)
 {
 	int		i;
@@ -56,7 +56,12 @@ void		game_init(int argc, char **argv, t_game *game)
 	i = 0;
 	while (i < 4)
 		game->flag[i++] = 0;
-	game->str = NULL;
+	if (!(game->str = malloc(sizeof(char) * 1)))
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
+	*game->str = '\0';
 	game->fd = 0;
 	if (!checker(argc, argv, game))
 	{
@@ -96,7 +101,7 @@ int		main(int argc, char **argv)
 			return (1);
 		}
 		game.b.len = 0;
-		if (is_good(game) <= 0)
+		if (is_good(&game) <= 0)
 			algo(&game);
 		if (game.fd > 0)
 			close(game.fd);

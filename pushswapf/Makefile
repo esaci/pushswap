@@ -6,7 +6,7 @@ FTPRINTF = libftprintf.a
 
 SRCD = ./src
 
-CUBD= bibz/libcheck.a
+CUBD= bibz/libpush.a
 
 LIBFTD = ../fct/libft/
 
@@ -20,6 +20,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRC =		$(SRCD)/utils3.c \
 			$(SRCD)/utils2.c \
+			$(SRCD)/utils.c \
+			$(SRCD)/instructions.c \
 			$(GNL)/get_next_line.c \
 			$(GNL)/get_next_line_utils.c \
 
