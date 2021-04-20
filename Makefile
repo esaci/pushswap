@@ -1,32 +1,31 @@
 
-CHECKF = ./checkerf/
+CHECKF = checkerf
 
 CHECKO = checker
 
-PUSHF = ./pushswapf/
+PUSHF = pushswapf
 
 PUSHO = push_swap
 
+all				:	$(CHECKO) $(PUSHO)
+					@ $(shell cp $(CHECKF)/$(CHECKO) . )
+					@ $(shell cp $(PUSHF)/$(PUSHO) . )
 
-all: $(NAME)
+$(CHECKO)		:
+					@ $(MAKE) --silent -C $(CHECKF)
 
-$(NAME) : rm -rf $(CHECKO)
-	rm -rf $(PUSHO)
-	make $(CHECKF)
-	cp $(CHECKF)$(CHECKO) ./$(CHECKO)
-	make $(PUSHF)
-	cp $(PUSHF)$(PUSHO) ./$(PUSHO)
+$(PUSHO)	:
+					@ $(MAKE) --silent -C $(PUSHF)
 
-clean:
-	make clean $(CHECKF)
-	make clean $(PUSHF)
+clean			:
+					@ $(MAKE) fclean --silent -C $(CHECKF) > /dev/null 2>&1
+					@ $(MAKE) fclean --silent -C $(PUSHF) > /dev/null 2>&1
 
-fclean: clean
-	make fclean $(CHECKF)
-	make fclean $(PUSHF)
-	rm -rf $(CHECKO)
-	rm -rf $(PUSHO)
+fclean			:
+					@ rm -rf $(PUSHO) $(CHECKO)
+					@ $(MAKE) fclean --silent -C $(CHECKF) > /dev/null 2>&1
+					@ $(MAKE) fclean --silent -C $(PUSHF) > /dev/null 2>&1
 
-re: fclean all
+re				: 	fclean all
 
-.PHONY: clean fclean all re
+.PHONY: 		all fclean clean re
