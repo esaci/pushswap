@@ -49,7 +49,6 @@ fclean: clean
 	rm -rf $(NAME)
 	rm -rf $(LIBFT)
 	rm -rf $(CUBD)
-	rm -rf checker.dSYM
 	make fclean -C $(LIBFTD)
 
 re: fclean all

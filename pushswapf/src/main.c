@@ -107,6 +107,7 @@ int		main(int argc, char **argv)
 			close(game.fd);
 		free(game.a.ptr);
 		free(game.b.ptr);
+		write(game.fd, game.str, ft_strlen(game.str));
 	}
 	return (0);
 }
