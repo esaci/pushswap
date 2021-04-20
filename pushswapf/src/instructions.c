@@ -21,6 +21,8 @@ void swap(t_stack *stack)
 	temp = stack->ptr[stack->len - 2];
 	stack->ptr[stack->len - 2] = stack->ptr[stack->len - 1];
 	stack->ptr[stack->len - 1] = temp;
+	stack->prem = temp;
+	stack_init(stack);
 }
 
 void push(t_stack *s, t_stack *d)
@@ -33,6 +35,8 @@ void push(t_stack *s, t_stack *d)
 		d->len += 1;
 		s->len -= 1;
 	}
+	stack_init(s);
+	stack_init(d);
 }
 
 void rotate(t_stack *s)
@@ -50,6 +54,7 @@ void rotate(t_stack *s)
 		i--;
 	}
 	s->ptr[i] = temp;
+	stack_init(s);
 }
 
 void reverserotate(t_stack *stack)
@@ -67,6 +72,7 @@ void reverserotate(t_stack *stack)
 		i++;
 	}
 	stack->ptr[i] = temp;
+	stack_init(stack);
 }
 
 void ft_lecteur(char *inst, t_game *game)

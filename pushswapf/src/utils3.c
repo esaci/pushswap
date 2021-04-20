@@ -28,3 +28,34 @@ int		is_good(t_game *game)
 		return (-2);
 	return (1);
 }
+
+size_t	check_value(t_stack *stack, int value)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < stack->len && stack->ptr[i] != value)
+		i++;
+	return (i);
+}
+
+int		value_premier(t_stack *stack, int value, t_game *game)
+{
+	size_t	ivalue;
+
+	ivalue = check_value(stack, value);
+	if (ivalue == stack->len)
+		return (0);
+	if (ivalue >= stack->len / 2)
+	{
+		while (stack->prem != value)
+			updatelist(game, "ra");
+	}
+	else
+	{
+		while (stack->prem != value)
+			updatelist(game, "rra");
+	}
+	return (1);
+}
+

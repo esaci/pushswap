@@ -50,4 +50,6 @@ int				is_good(t_game *game);
 void			ft_lecteur(char *inst, t_game *game);
 void			updatelist(t_game *game, char *str);
 void			tech_trois(t_game *game);
+int				value_premier(t_stack *stack, int value, t_game *game);
+void			tech_mquinze(t_game *game);
 #endif

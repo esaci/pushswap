@@ -133,6 +133,7 @@ void	applications(int *list, t_game *game, char **action, int len)
 	i = 0;
 	while (i < len)
 	{
+		printf("nbr action faite %d\n", i + 1);
 		ft_lecteur(action[list[i]], game);
 		i++;
 	}

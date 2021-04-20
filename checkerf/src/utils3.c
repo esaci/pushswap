@@ -21,7 +21,10 @@ int		is_good(t_game *game)
 	while (i < game->a.len - 1)
 	{
 		if (game->a.ptr[(int)i] < game->a.ptr[(int)i + 1])
+		{
+			printf("%d < %d < %d ? NON\n", game->a.ptr[(int)2], game->a.ptr[(int)1],  game->a.ptr[(int)0]);
 			return (-1);
+		}
 		i++;
 	}
 	if (game->b.len != 0)

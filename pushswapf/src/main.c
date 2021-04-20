@@ -19,9 +19,9 @@ void	algo(t_game *game)
 		updatelist(game, "sa");
 	else if (game->a.len == 3)
 		tech_trois(game);
-/* 	else if (game->a.len <= 15)
-		tech_mquinze(game->a, game->b);
-	else
+	else if (game->a.len <= 15)
+		tech_mquinze(game);
+/* 	else
 		tech_pquinze(game->a, game->b);
 	manage_disp(0, 1); */
 }

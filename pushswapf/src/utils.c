@@ -64,24 +64,37 @@ void		updatelist(t_game *game, char *str)
 
 void		tech_trois(t_game *game)
 {
-	if (game->a.ptr[2] < game->a.ptr[0])
+	if (game->a.ptr[2] > game->a.ptr[0])
 	{
-		if (game->a.ptr[2] < game->a.ptr[1])
+		if (game->a.ptr[2] > game->a.ptr[1])
 		{
 			updatelist(game, "ra");
-			updatelist(game, "sa");
+			if ((game->a.ptr[2] > game->a.ptr[1]))
+				updatelist(game, "sa");
 		}
 		else
 		{
 			updatelist(game, "rra");
-			updatelist(game, "rra");
 		}
 	}
-	else if (game->a.ptr[1] < game->a.ptr[0])
+	else if (game->a.ptr[1] < game->a.ptr[2])
 		updatelist(game, "sa");
 	else
 	{
 		updatelist(game, "rra");
 		updatelist(game, "sa");
 	}
+}
+
+void	tech_mquinze(t_game *game)
+{
+	while (game->a.len != 3)
+	{
+		value_premier(&game->a, game->a.min, game);
+		updatelist(game, "pa");
+	}
+	if (!is_good(game))
+		tech_trois(game);
+	while (game->b.len != 0)
+		updatelist(game, "pa");
 }
