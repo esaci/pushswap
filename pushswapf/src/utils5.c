@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils3.c                                           :+:      :+:    :+:   */
+/*   utils5.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esaci <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 12:08:21 by esaci             #+#    #+#             */
-/*   Updated: 2021/04/15 12:08:25 by esaci            ###   ########.fr       */
+/*   Created: 2021/04/23 18:05:54 by esaci             #+#    #+#             */
+/*   Updated: 2021/04/23 18:05:56 by esaci            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../bibz/libcheck.h"
-
-int		is_good(t_game *game)
+int		check_borne(t_stack *s, int min, int max)
 {
-	size_t		i;
+	size_t	count;
 
-	i = 0;
-	while (i < game->a.len - 1)
+	count = 0;
+	while (count < s->len)
 	{
-		if (game->a.ptr[(int)i] < game->a.ptr[(int)i + 1])
-		{
-			return (-1);
-		}
-		i++;
+		if (s->ptr[count] >= min && s->ptr[count] <= max)
+			return (1);
+		count++;
 	}
-	if (game->b.len != 0)
-		return (-2);
-	return (1);
+	return (0);
 }

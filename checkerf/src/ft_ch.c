@@ -36,7 +36,6 @@ int		*listeur(int *list, int len,char *line, char **action)
 			break;
 		y++;
 	}
-	/* printf("okk laction %s soit %d dans %d et len %d\n", action[y], y, i, len); */
 	list2[i] = y;
 	list2[++i] = 0;
 	free(list);
@@ -133,7 +132,6 @@ void	applications(int *list, t_game *game, char **action, int len)
 	i = 0;
 	while (i < len)
 	{
-		printf("nbr action faite %d\n", i + 1);
 		ft_lecteur(action[list[i]], game);
 		i++;
 	}

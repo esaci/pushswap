@@ -6,7 +6,7 @@
 /*   By: esaci <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 10:31:31 by esaci             #+#    #+#             */
-/*   Updated: 2021/04/19 10:31:36 by esaci            ###   ########.fr       */
+/*   Updated: 2021/04/23 16:16:41 by esaci            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct	s_stack
 	int			prem;
 	int			dern;
 	int			flag;
+	int			fsort;
+	int			fmax;
 }				t_stack;
 
 typedef struct	s_game
@@ -44,6 +46,7 @@ typedef struct	s_game
 }				t_game;
 
 void			stack_init(t_stack *s);
+void			stack_update(t_stack *s, int i);
 int				*readlist(int argc, char **argv, int count);
 int				checker(int argc, char **argv, t_game *game);
 int				is_good(t_game *game);
@@ -52,4 +55,8 @@ void			updatelist(t_game *game, char *str);
 void			tech_trois(t_game *game);
 int				value_premier(t_stack *stack, int value, t_game *game);
 void			tech_mquinze(t_game *game);
+int				is_goodsansb(t_game *game);
+int				is_median(t_stack *stack);
+size_t			check_value(t_stack *stack, int value);
+int				check_borne(t_stack *s, int min, int max);
 #endif

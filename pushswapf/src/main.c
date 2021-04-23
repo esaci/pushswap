@@ -21,9 +21,8 @@ void	algo(t_game *game)
 		tech_trois(game);
 	else if (game->a.len <= 15)
 		tech_mquinze(game);
-/* 	else
-		tech_pquinze(game->a, game->b);
-	manage_disp(0, 1); */
+	else
+		tech_pquinze(game);
 }
 
 int			doublon_int(t_stack *a)
@@ -62,7 +61,7 @@ void		game_init(int argc, char **argv, t_game *game)
 		exit(1);
 	}
 	*game->str = '\0';
-	game->fd = 0;
+	game->fd = 1;
 	if (!checker(argc, argv, game))
 	{
 		write(2, "Mauvaises Options\n", 14);
@@ -103,7 +102,7 @@ int		main(int argc, char **argv)
 		game.b.len = 0;
 		if (is_good(&game) <= 0)
 			algo(&game);
-		if (game.fd > 0)
+		if (game.fd > 1)
 			close(game.fd);
 		free(game.a.ptr);
 		free(game.b.ptr);

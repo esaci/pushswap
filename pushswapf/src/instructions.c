@@ -22,21 +22,35 @@ void swap(t_stack *stack)
 	stack->ptr[stack->len - 2] = stack->ptr[stack->len - 1];
 	stack->ptr[stack->len - 1] = temp;
 	stack->prem = temp;
-	stack_init(stack);
+	stack_update(stack, 0);
 }
 
-void push(t_stack *s, t_stack *d)
+void push(t_stack *d, t_stack *s)
 {
+	int			*nptr;
+	size_t		i;
+
 	if (s->len <= 0)
 		return ;
-	if (s->len > 0)
+	if (d->flag == 1)
 	{
-		d->ptr[d->len] = s->ptr[s->len - 1];
-		d->len += 1;
-		s->len -= 1;
+		if (!(nptr = malloc(sizeof(int) * (d->len + 1))))
+		{
+			write(1, "Malloc probleme \n", 17);
+			exit(1);
+		}
+		i = 0;
+		while (i < d->len)
+		{
+			nptr[i] = d->ptr[i];
+			i++;
+		}
+		free(d->ptr);
+		d->ptr = nptr;
 	}
-	stack_init(s);
-	stack_init(d);
+	d->ptr[d->len] = s->ptr[s->len - 1];
+	stack_update(s, -1);
+	stack_update(d, 1);
 }
 
 void rotate(t_stack *s)
@@ -54,7 +68,7 @@ void rotate(t_stack *s)
 		i--;
 	}
 	s->ptr[i] = temp;
-	stack_init(s);
+	stack_update(s, 0);
 }
 
 void reverserotate(t_stack *stack)
@@ -72,7 +86,7 @@ void reverserotate(t_stack *stack)
 		i++;
 	}
 	stack->ptr[i] = temp;
-	stack_init(stack);
+	stack_update(stack, 0);
 }
 
 void ft_lecteur(char *inst, t_game *game)
@@ -82,13 +96,13 @@ void ft_lecteur(char *inst, t_game *game)
 	else if (!ft_strncmp(inst, "sb", 2))
 		return (swap(&game->b));
 	else if (!ft_strncmp(inst, "pa", 2))
-		return (push(&game->b, &game->a));
+		return (push(&game->a, &game->b));
 	else if (!ft_strncmp(inst, "ra", 2))
 		return (rotate(&game->a));
 	else if (!ft_strncmp(inst, "rb", 2))
 		return (rotate(&game->b));
 	else if (!ft_strncmp(inst, "pb", 2))
-		return (push(&game->a, &game->b));
+		return (push(&game->b, &game->a));
 	else if (!ft_strncmp(inst, "rra", 3))
 		return (reverserotate(&game->a));
 	else if (!ft_strncmp(inst, "rrb", 3))

@@ -33,6 +33,28 @@ void		stack_init(t_stack *s)
 	}
 }
 
+void		stack_update(t_stack *s, int i)
+{
+	size_t	count;
+
+	count = 1;
+	s->len = s->len + i;
+	if (s->len == 0)
+		return ;
+	s->prem = s->ptr[s->len - 1];
+	s->dern = s->ptr[0];
+	s->min = s->dern;
+	s->max = s->dern;
+	while (count < s->len)
+	{
+		if (s->ptr[(int)count] > s->max)
+			s->max = s->ptr[(int)count];
+		if (s->ptr[(int)count] < s->min)
+			s->min = s->ptr[(int)count];
+		count++;
+	}
+}
+
 void		updatelist(t_game *game, char *str)
 {
 	size_t		len;
@@ -88,13 +110,13 @@ void		tech_trois(t_game *game)
 
 void	tech_mquinze(t_game *game)
 {
-	while (game->a.len != 3)
+	while (game->a.len > 3)
 	{
 		value_premier(&game->a, game->a.min, game);
-		updatelist(game, "pa");
+		updatelist(game, "pb");
 	}
-	if (!is_good(game))
+	if (is_goodsansb(game) < 1)
 		tech_trois(game);
-	while (game->b.len != 0)
+	while (game->b.len > 0)
 		updatelist(game, "pa");
 }
