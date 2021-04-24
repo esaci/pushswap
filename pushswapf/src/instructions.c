@@ -30,6 +30,7 @@ void push(t_stack *d, t_stack *s)
 	int			*nptr;
 	size_t		i;
 
+
 	if (s->len <= 0)
 		return ;
 	if (d->flag == 1)

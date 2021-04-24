@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../bibz/libpush.h"
 
 int		count_inf(t_stack *s, size_t i,  int value)
 {
@@ -56,13 +57,13 @@ int		is_median(t_stack *stack)
 	while (count < stack->len)
 	{
 		if (reststack % 2 == 1 &&
-			((count_sup(stack, imin, stack->ptr + count))
-			== count_inf(stack, imin, stack->ptr + count)))
+			((count_sup(stack, imin, stack->ptr[count]))
+			== count_inf(stack, imin, stack->ptr[count])))
 			break ;
 		else if (count_inf(stack, imin, stack->ptr[count] - 1)
-			== count_sup(stack, imin, stack->ptr + count))
+			== count_sup(stack, imin, stack->ptr[count]))
 			break ;
 		count++;
 	}
-	return (stack->ptr[i]);
+	return (stack->ptr[count]);
 }

@@ -79,3 +79,24 @@ int		*readlist(int argc, char **argv, int count)
 		ptr[j++] = ft_atoi(argv[i--]);
 	return (ptr);
 }
+
+void		stack_init(t_stack *s)
+{
+	size_t	i;
+
+	i = 1;
+	if (s->len == 0)
+		return ;
+	s->prem = s->ptr[s->len - 1];
+	s->dern = s->ptr[0];
+	s->min = s->dern;
+	s->max = s->dern;
+	while (i < s->len)
+	{
+		if (s->ptr[(int)i] > s->max)
+			s->max = s->ptr[(int)i];
+		if (s->ptr[(int)i] < s->min)
+			s->min = s->ptr[(int)i];
+		i++;
+	}
+}

@@ -12,27 +12,6 @@
 
 #include "../bibz/libpush.h"
 
-void		stack_init(t_stack *s)
-{
-	size_t	i;
-
-	i = 1;
-	if (s->len == 0)
-		return ;
-	s->prem = s->ptr[s->len - 1];
-	s->dern = s->ptr[0];
-	s->min = s->dern;
-	s->max = s->dern;
-	while (i < s->len)
-	{
-		if (s->ptr[(int)i] > s->max)
-			s->max = s->ptr[(int)i];
-		if (s->ptr[(int)i] < s->min)
-			s->min = s->ptr[(int)i];
-		i++;
-	}
-}
-
 void		stack_update(t_stack *s, int i)
 {
 	size_t	count;
@@ -119,4 +98,28 @@ void	tech_mquinze(t_game *game)
 		tech_trois(game);
 	while (game->b.len > 0)
 		updatelist(game, "pa");
+}
+
+void	tech_pquinze(t_game *game)
+{
+	int		bornemax;
+	int		bornemin;
+
+	game->a.fsort = 0;
+	game->b.fsort = 0;
+	bornemin = game->a.min;
+	while (is_good(game) < 1)
+	{
+		bornemax = is_median(&game->a);
+		if (bornemax == bornemin)
+		{
+			if (game->a.prem > game->a.ptr[game->a.len - 2])
+				updatelist(game, "sa");
+			updatelist(game, "ra");
+			updatelist(game, "ra");
+			return ;
+		}
+		aborneur(game, bornemin, bornemax);
+		bornemin = game->a.fmax + 1;
+	}
 }

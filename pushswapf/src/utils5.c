@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../bibz/libpush.h"
 
 int		check_borne(t_stack *s, int min, int max)
 {

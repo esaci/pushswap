@@ -59,4 +59,6 @@ int				is_goodsansb(t_game *game);
 int				is_median(t_stack *stack);
 size_t			check_value(t_stack *stack, int value);
 int				check_borne(t_stack *s, int min, int max);
+void			aborneur(t_game *game, int bornemin, int bornemax);
+void			tech_pquinze(t_game *game);
 #endif
