@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../bibz/libcheck.h"
 
 int		is_good(t_game *game)
@@ -29,4 +28,31 @@ int		is_good(t_game *game)
 	if (game->b.len != 0)
 		return (-2);
 	return (1);
+}
+
+int		*listeur(int *list, int len, char *line, char **action)
+{
+	int		*list2;
+	int		y;
+	int		i;
+
+	if (!(list2 = malloc(sizeof(int) * (len + 2))))
+		exit(1);
+	i = 0;
+	while (i < len)
+	{
+		list2[i] = list[i];
+		i++;
+	}
+	y = 0;
+	while (action[y])
+	{
+		if (!ft_strncmp(line, action[y], 3))
+			break ;
+		y++;
+	}
+	list2[i] = y;
+	list2[++i] = 0;
+	free(list);
+	return (list2);
 }

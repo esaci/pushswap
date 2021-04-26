@@ -12,16 +12,13 @@
 
 #include "../bibz/libcheck.h"
 
-void		game_init(int argc, char **argv, t_game *game)
+void		game_init(int argc, char **argv, t_game *game, int i)
 {
-	int		i;
-
-	i = 0;
 	while (i < 4)
 		game->flag[i++] = 0;
 	game->str = NULL;
 	game->fd = 0;
-	if (!checker(argc, argv, game))
+	if (!checker(argc, argv, game, 1))
 	{
 		write(2, "Mauvaises Options\n", 14);
 		exit(1);
@@ -69,18 +66,18 @@ int			doublon_int(t_stack *a)
 
 int			main(int argc, char **argv)
 {
-    t_game game;
+	t_game game;
 
-    if (argc >= 2)
+	if (argc >= 2)
 	{
-        game_init(argc, argv, &game);
+		game_init(argc, argv, &game, 0);
 		if (!game.a.ptr || !doublon_int(&game.a))
 		{
 			write(2, "Error\n", 6);
 			return (1);
 		}
 		game.b.len = 0;
-		ft_ch(&game);
+		ft_ch(&game, 0, createaction());
 		if (game.fd > 0)
 			close(game.fd);
 		free(game.a.ptr);

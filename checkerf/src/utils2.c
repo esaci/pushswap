@@ -26,33 +26,31 @@ int		c_int(char *nbr)
 	return (1);
 }
 
-int		checker(int argc, char **argv, t_game *game)
+int		checker(int argc, char **argv, t_game *game, int count2)
 {
-	int		count1;
-	int		count2;
-
-	count1 = 1;
-	while (count1 < argc && argv[count1][0] == '-' && !c_int(argv[count1]))
+	game->count = 1;
+	while (game->count < argc && argv[game->count][0] == '-'
+		&& !c_int(argv[game->count]))
 	{
 		count2 = 1;
-		while (argv[count1][count2])
+		while (argv[game->count][count2])
 		{
-			if (argv[count1][count2] == 'c')
+			if (argv[game->count][count2] == 'c')
 				game->flag[0] = 1;
-			else if (argv[count1][count2] == 'v')
+			else if (argv[game->count][count2] == 'v')
 				game->flag[1] = 1;
-			else if (argv[count1][count2] == 'f')
+			else if (argv[game->count][count2] == 'f')
 				game->flag[2] = 1;
 			else
 				return (0);
 			count2++;
 		}
-		if (!game->str && game->flag[2] == 1 && count1 + 1 < argc)
-			game->str = argv[++count1];
+		if (!game->str && game->flag[2] == 1 && game->count + 1 < argc)
+			game->str = argv[++game->count];
 		else
-			count1++;
+			game->count++;
 	}
-	game->count = count1 - 1;
+	game->count = game->count - 1;
 	return (1);
 }
 

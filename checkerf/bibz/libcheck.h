@@ -1,8 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libcheck.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esaci <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/26 11:49:29 by esaci             #+#    #+#             */
+/*   Updated: 2021/04/26 11:49:38 by esaci            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBCHECK_H
 # define LIBCHECK_H
-
-#include "../../fct/libft/libft.h"
-#include "../../fct/GNL/get_next_line.h"
+# include "../../fct/libft/libft.h"
+# include "../../fct/GNL/get_next_line.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -26,9 +37,11 @@ typedef struct	s_game
 }				t_game;
 
 void			ft_lecteur(char *inst, t_game *game);
-int				checker(int argc, char **argv, t_game *game);
+int				checker(int argc, char **argv, t_game *game, int count2);
 int				*init_ptr(int argc, char **argv, int count);
 int				c_int(char *nbr);
-void			ft_ch(t_game *game);
+void			ft_ch(t_game *game, int len, char **action);
 int				is_good(t_game *game);
+int				*listeur(int *list, int len, char *line, char **action);
+char			**createaction(void);
 #endif
