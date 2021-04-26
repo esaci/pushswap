@@ -53,23 +53,42 @@ size_t	check_value(t_stack *stack, int value)
 	return (i);
 }
 
-int		value_premier(t_stack *stack, int value, t_game *game)
+int		value_premiera(int value, t_game *game)
 {
 	size_t	ivalue;
 
-	ivalue = check_value(stack, value);
-	if (ivalue == stack->len)
+	ivalue = check_value(&game->a, value);
+	if (ivalue == game->a.len)
 		return (0);
-	if (ivalue >= stack->len / 2)
+	if (ivalue >= game->a.len / 2)
 	{
-		while (stack->prem != value)
+		while (game->a.prem != value)
 			updatelist(game, "ra");
 	}
 	else
 	{
-		while (stack->prem != value)
+		while (game->a.prem != value)
 			updatelist(game, "rra");
 	}
 	return (1);
 }
 
+int		value_premierb(int value, t_game *game)
+{
+	size_t	ivalue;
+
+	ivalue = check_value(&game->b, value);
+	if (ivalue == game->b.len)
+		return (0);
+	if (ivalue >= game->b.len / 2)
+	{
+		while (game->b.prem != value)
+			updatelist(game, "rb");
+	}
+	else
+	{
+		while (game->b.prem != value)
+			updatelist(game, "rrb");
+	}
+	return (1);
+}

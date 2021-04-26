@@ -63,9 +63,7 @@ void	fullpushb(t_game *game)
 	while (game->b.len > 0)
 	{
 		temp = minormax(game);
-		write(1, "ok1\n", 5);
-		value_premier(&game->b, temp, game);
-		write(1, "ok2\n", 5);
+		value_premierb(temp, game);
 		updatelist(game, "pa");
 		new_min(game);
 	}

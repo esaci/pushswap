@@ -91,7 +91,7 @@ void	tech_mquinze(t_game *game)
 {
 	while (game->a.len > 3)
 	{
-		value_premier(&game->a, game->a.min, game);
+		value_premiera(game->a.min, game);
 		updatelist(game, "pb");
 	}
 	if (is_goodsansb(game) < 1)
