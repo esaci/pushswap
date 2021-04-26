@@ -82,3 +82,31 @@ char	**createaction(void)
 	action = createaction2(action);
 	return (action);
 }
+
+void	optionv(t_game *game, char **action, int *list, int count)
+{
+	int		i;
+
+	if (game->flag[1] != 1)
+		return ;
+	printf("\e[H\e[2J");
+	printf("---%d-----\n", count + 1);
+	printf("\e[1;34m%s\e[0m", action[list[count]]);
+	while (count > 0)
+		printf(" %s", action[list[count--]]);
+	printf(" \n");
+	printf("%11c   %-11c\n", 'a', 'b');
+	i = (int)game->a.len - 1;
+	while (i >= 0)
+	{
+		if (i < (int)game->a.len)
+			printf("%11d | ", game->a.ptr[i]);
+		else
+			printf("%11s | ", "");
+		if (i < (int)game->b.len)
+			printf("%-11d", game->b.ptr[i]);
+		printf("\n");
+		i--;
+	}
+	usleep(900000);
+}

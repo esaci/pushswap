@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esaccount1 <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: esaci <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 14:17:12 by esaci             #+#    #+#             */
-/*   Updated: 2021/04/12 14:17:15 by esaci            ###   ########.fr       */
+/*   Created: 2021/04/26 18:12:12 by esaci             #+#    #+#             */
+/*   Updated: 2021/04/26 18:12:18 by esaci            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../bibz/libpush.h"
 
-int		c_int(char *nbr)
+int			c_int(char *nbr)
 {
 	char	*temp;
 
@@ -26,12 +26,10 @@ int		c_int(char *nbr)
 	return (1);
 }
 
-int		checker(int argc, char **argv, t_game *game)
+int			checker(int argc, char **argv, t_game *game, int count1)
 {
-	int		count1;
 	int		count2;
 
-	count1 = 1;
 	while (count1 < argc && argv[count1][0] == '-' && !c_int(argv[count1]))
 	{
 		count2 = 1;
@@ -56,7 +54,7 @@ int		checker(int argc, char **argv, t_game *game)
 	return (1);
 }
 
-int		*readlist(int argc, char **argv, int count)
+int			*readlist(int argc, char **argv, int count)
 {
 	int		*ptr;
 	int		i;

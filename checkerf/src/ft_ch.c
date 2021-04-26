@@ -46,6 +46,7 @@ void	applications(int *list, t_game *game, char **action, int len)
 	while (i < len)
 	{
 		ft_lecteur(action[list[i]], game);
+		optionv(game, action, list, i);
 		i++;
 	}
 	if (is_good(game) > 0)

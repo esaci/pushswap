@@ -12,7 +12,7 @@
 
 #include "../bibz/libpush.h"
 
-void	algo(t_game *game)
+void		algo(t_game *game)
 {
 	stack_init(&game->a);
 	if (game->a.len == 2)
@@ -62,7 +62,7 @@ void		game_init(int argc, char **argv, t_game *game)
 	}
 	*game->str = '\0';
 	game->fd = 1;
-	if (!checker(argc, argv, game))
+	if (!checker(argc, argv, game, 1))
 	{
 		write(2, "Mauvaises Options\n", 14);
 		exit(1);
@@ -74,6 +74,11 @@ void		game_init(int argc, char **argv, t_game *game)
 		write(2, "Fichier non lu\n", 15);
 		exit(1);
 	}
+	game_init2(game);
+}
+
+void		game_init2(t_game *game)
+{
 	game->a.ptr = readlist(argc, argv, game->count);
 	game->size = argc - game->count - 1;
 	game->a.len = game->size;
@@ -87,7 +92,7 @@ void		game_init(int argc, char **argv, t_game *game)
 	}
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_game game;
 

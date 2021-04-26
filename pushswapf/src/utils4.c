@@ -36,7 +36,8 @@ void	new_min(t_game *game)
 {
 	size_t	count;
 
-	if ((game->a.prem > game->b.min && game->b.len > 0) || is_goodsansb(game) == 1)
+	if ((game->a.prem > game->b.min && game->b.len > 0)
+		|| is_goodsansb(game) == 1)
 		return ;
 	if (game->a.prem == game->a.min)
 	{
@@ -73,9 +74,11 @@ void	bborneur(t_game *game, int bornemin, int bornemax)
 {
 	if (!(bornemin < bornemax))
 		return ;
-	while (game->b.len >= 12 && check_borne(&game->b, bornemin, game->b.max) == 1)
+	while (game->b.len >= 12 &&
+		check_borne(&game->b, bornemin, game->b.max) == 1)
 	{
-		if ((game->b.prem >= bornemin && game->b.prem <= game->b.max) || game->b.prem == game->b.min)
+		if ((game->b.prem >= bornemin &&
+			game->b.prem <= game->b.max) || game->b.prem == game->b.min)
 		{
 			updatelist(game, "pa");
 			new_min(game);

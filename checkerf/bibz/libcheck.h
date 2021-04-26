@@ -19,6 +19,12 @@
 # include <fcntl.h>
 # include <stdio.h>
 
+# define BLEU "\e[1;34m[0m"
+# define CLEAN "\e[H\e[2J"
+# define RESET "\033[0m"
+# define NB_MOVES 11
+# define DELAY 100000
+
 typedef struct	s_stack
 {
 	int			*ptr;
@@ -44,4 +50,5 @@ void			ft_ch(t_game *game, int len, char **action);
 int				is_good(t_game *game);
 int				*listeur(int *list, int len, char *line, char **action);
 char			**createaction(void);
+void			optionv(t_game *game, char **action, int *list, int count);
 #endif

@@ -10,17 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../bibz/libpush.h"
 
 int		is_goodsansb(t_game *game)
 {
-	size_t		i;
+	int		i;
 
 	i = 0;
-	while (i < game->a.len - 1)
+	while (i < (int)game->a.len - 1)
 	{
-		if (game->a.ptr[(int)i] < game->a.ptr[(int)i + 1])
+		if (game->a.ptr[i] < game->a.ptr[i + 1])
 			return (-1);
 		i++;
 	}
