@@ -49,7 +49,7 @@ void		updatelist(t_game *game, char *str)
 	if (str[1] == 'r' && (str[2] == '\0' || str[2] == 'r'))
 			y = ft_clear(game);
 	i = 0;
-	while (len - i >= 0)
+	while ((int)(len - i) >= 0)
 	{
 		if (len == y)
 			i = ft_strlen(game->temp);
