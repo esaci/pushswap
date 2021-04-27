@@ -12,85 +12,80 @@
 
 #include "../bibz/libpush.h"
 
-int		ft_clear(t_game *game)
+void	ft_clear(char *str, char *str2)
 {
 	int		i;
 	int		s;
+	int		y;
 
-	if (game->temp[0] == '\0')
-		return (0);
-	i = ft_strlen(game->str);
-	s = ft_strlen(game->temp);
+	i = ft_strlen(str2) - 1;
+	s = ft_strlen(str);
 	while (i > s)
 	{
-		if (ft_strncmp(game->temp, (game->str + i - s), s) == s)
+		if (ft_strncmp(str, (str2 + i - s), s))
 		{
-			game->temp[0] = '\0';
-			game->temp[1] = '\0';
-			return (i + s);
+			y = 0;
+			while(y < (s - 1))
+			{
+				str2[i - y] = 'e';
+				y++;
+			}
+			return ;
 		}
 		i--;
 	}
-	return (0);
 }
 
-char	*optirr(t_game *game, char *str)
+char	*optirr(t_game *game, char *str, char *str2)
 {
 	if (game->rbc == 0 && str[1] == 'a')
 		game->rac += 1;
 	else if (game->rbc >= 1 && str[1] == 'a')
 	{
+		ft_clear("rb", str2);
 		game->rbc--;
-		game->temp[0] = 'b';
 		return("rr");
 	}
 	if (game->rac == 0 && str[1] == 'b')
 		game->rbc += 1;
 	else if (game->rac >= 1 && str[1] == 'b')
 	{
+		ft_clear("ra", str2);
 		game->rac--;
-		game->temp[0] = 'a';
 		return("rr");
 	}
-	return (str);
+	return(str);
 }
 
-char	*optirrr(t_game *game, char *str)
+char	*optirrr(t_game *game, char *str, char *str2)
 {
 	if (game->rrbc == 0 && str[2] == 'a')
 		game->rrac += 1;
 	else if (game->rrbc >= 1 && str[2] == 'a')
 	{
+		ft_clear("rrb", str2);
 		game->rrbc--;
-		game->temp[0] = 'r';
-		game->temp[1] = 'b';
 		return("rrr");
 	}
 	if (game->rrac == 0 && str[2] == 'b')
 		game->rrbc += 1;
 	else if (game->rrac >= 1 && str[2] == 'b')
 	{
+		ft_clear("rra", str2);
 		game->rrac--;
-		game->temp[0] = 'r';
-		game->temp[1] = 'a';
 		return("rrr");
 	}
 	return(str);
 }
 
-char	*gestrr(t_game *game, char *str)
+char	*gestrr(t_game *game, char *str, char *str2)
 {
-	game->temp[0] = '\0';
-	game->temp[1] = '\0';
 	if (str[0] == 'r')
 	{
 		if (str[1] == 'r')
-			return(optirrr(game, str));
-		return(optirr(game, str));
+			return(optirrr(game, str, str2));
+		else
+			return(optirr(game, str, str2));
 	}
-	game->rac = 0;
-	game->rrac = 0;
-	game->rbc = 0;
-	game->rrbc = 0;
 	return(str);
 }

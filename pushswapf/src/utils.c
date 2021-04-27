@@ -42,22 +42,17 @@ void		updatelist(t_game *game, char *str)
 	size_t		y;
 
 	ft_lecteur(str, game);
-	len = ft_strlen(game->str) - 1;
-	if (!(str2 = malloc(sizeof(char) * (len + ft_strlen(str) + 4))))
+	len = ft_strlen(game->str);
+	if (!(str2 = malloc(sizeof(char) * (len + ft_strlen(str) + 3))))
 		exit(1);
-	str = gestrr(game, str);
-	if (str[1] == 'r' && (str[2] == '\0' || str[2] == 'r'))
-			y = ft_clear(game);
 	i = 0;
-	while ((int)(len - i) >= 0)
+	while (i < len)
 	{
-		if (len == y)
-			i = ft_strlen(game->temp);
-		str2[len] = game->str[len - i];
-		len--;
+		str2[i] = game->str[i];
+		i++;
 	}
-	i = ft_strlen(game->str);
 	y = 0;
+	str = gestrr(game, str, str2);
 	while (y < ft_strlen(str))
 	{
 		str2[i + y] = str[y];
