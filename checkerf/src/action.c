@@ -87,6 +87,12 @@ void	optionv(t_game *game, char **action, int *list, int count)
 {
 	int		i;
 
+	if (game->flag[5] == 1)
+	{
+		printf("\e[H\e[2J");
+		printf("---%d-----\n", count + 1);
+		return ;
+	}
 	if (game->flag[1] != 1)
 		return ;
 	printf("\e[H\e[2J");
@@ -108,5 +114,5 @@ void	optionv(t_game *game, char **action, int *list, int count)
 		printf("\n");
 		i--;
 	}
-	usleep(900000);
+	usleep(300000);
 }

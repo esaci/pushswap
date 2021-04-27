@@ -48,6 +48,22 @@ int			doublon_int(t_stack *a)
 	return (1);
 }
 
+
+void		game_init2(t_game *game, int argc, char **argv)
+{
+	game->a.ptr = readlist(argc, argv, game->count);
+	game->size = argc - game->count - 1;
+	game->a.len = game->size;
+	game->a.flag = 0;
+	game->b.flag = 1;
+	if (!(game->b.ptr = malloc(sizeof(int) * game->a.len)))
+	{
+		write(2, "Error\n", 6);
+		free(game->a.ptr);
+		exit(1);
+	}
+}
+
 void		game_init(int argc, char **argv, t_game *game)
 {
 	int		i;
@@ -74,28 +90,17 @@ void		game_init(int argc, char **argv, t_game *game)
 		write(2, "Fichier non lu\n", 15);
 		exit(1);
 	}
-	game_init2(game);
-}
-
-void		game_init2(t_game *game)
-{
-	game->a.ptr = readlist(argc, argv, game->count);
-	game->size = argc - game->count - 1;
-	game->a.len = game->size;
-	game->a.flag = 0;
-	game->b.flag = 1;
-	if (!(game->b.ptr = malloc(sizeof(int) * game->a.len)))
-	{
-		write(2, "Error\n", 6);
-		free(game->a.ptr);
-		exit(1);
-	}
+	game_init2(game, argc, argv);
 }
 
 int			main(int argc, char **argv)
 {
 	t_game game;
 
+	game.rac = 0;
+	game.rrac = 0;
+	game.rbc = 0;
+	game.rrbc = 0;
 	if (argc >= 2)
 	{
 		game_init(argc, argv, &game);

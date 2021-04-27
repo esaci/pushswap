@@ -14,7 +14,7 @@
 
 void		game_init(int argc, char **argv, t_game *game, int i)
 {
-	while (i < 4)
+	while (i < 6)
 		game->flag[i++] = 0;
 	game->str = NULL;
 	game->fd = 0;

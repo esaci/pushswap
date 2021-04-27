@@ -1,0 +1,96 @@
+instructions.c:95:		return (swap(&game->a));
+instructions.c:97:		return (swap(&game->b));
+instructions.c:99:		return (push(&game->a, &game->b));
+instructions.c:101:		return (rotate(&game->a));
+instructions.c:103:		return (rotate(&game->b));
+instructions.c:105:		return (push(&game->b, &game->a));
+instructions.c:107:		return (reverserotate(&game->a));
+instructions.c:109:		return (reverserotate(&game->b));
+instructions.c:112:		reverserotate(&game->a);
+instructions.c:113:		reverserotate(&game->b);
+instructions.c:117:		rotate(&game->a);
+instructions.c:118:		return (rotate(&game->b));
+main.c:17:	stack_init(&game->a);
+main.c:18:	if (game->a.len == 2)
+main.c:20:	else if (game->a.len == 3)
+main.c:22:	else if (game->a.len <= 15)
+main.c:54:	game->a.ptr = readlist(argc, argv, game->count);
+main.c:55:	game->size = argc - game->count - 1;
+main.c:56:	game->a.len = game->size;
+main.c:57:	game->a.flag = 0;
+main.c:58:	game->b.flag = 1;
+main.c:59:	if (!(game->b.ptr = malloc(sizeof(int) * game->a.len)))
+main.c:62:		free(game->a.ptr);
+main.c:73:		game->flag[i++] = 0;
+main.c:74:	if (!(game->str = malloc(sizeof(char) * 1)))
+main.c:79:	*game->str = '\0';
+main.c:80:	game->fd = 1;
+main.c:86:	if (game->flag[2] == 1)
+main.c:87:		game->fd = open(game->str, O_RDONLY);
+main.c:88:	if (game->fd < 0)
+utils.c:44:	len = ft_strlen(game->str);
+utils.c:50:		str2[i] = game->str[i];
+utils.c:61:	free(game->str);
+utils.c:62:	game->str = str2;
+utils.c:68:	if (game->a.ptr[2] > game->a.ptr[0])
+utils.c:70:		if (game->a.ptr[2] > game->a.ptr[1])
+utils.c:73:			if ((game->a.ptr[2] > game->a.ptr[1]))
+utils.c:81:	else if (game->a.ptr[1] < game->a.ptr[2])
+utils.c:92:	while (game->a.len > 3)
+utils.c:94:		value_premiera(game->a.min, game);
+utils.c:99:	while (game->b.len > 0)
+utils.c:108:	bornemin = game->a.min;
+utils.c:109:	game->a.fsort = 0;
+utils.c:110:	game->b.fsort = 0;
+utils.c:113:		bornemax = is_median(&game->a);
+utils.c:116:			if (game->a.ptr[game->a.len - 1] > game->a.ptr[game->a.len - 2])
+utils.c:123:		bornemin = game->a.fmax + 1;
+utils2.c:39:				game->flag[0] = 1;
+utils2.c:41:				game->flag[1] = 1;
+utils2.c:43:				game->flag[2] = 1;
+utils2.c:48:		if (!game->str && game->flag[2] == 1 && count1 + 1 < argc)
+utils2.c:49:			game->str = argv[++count1];
+utils2.c:53:	game->count = count1 - 1;
+utils3.c:20:	while (i < (int)game->a.len - 1)
+utils3.c:22:		if (game->a.ptr[i] < game->a.ptr[i + 1])
+utils3.c:34:	while (i < game->a.len - 1)
+utils3.c:36:		if (game->a.ptr[(int)i] < game->a.ptr[(int)i + 1])
+utils3.c:40:	if (game->b.len != 0)
+utils3.c:59:	ivalue = check_value(&game->a, value);
+utils3.c:60:	if (ivalue == game->a.len)
+utils3.c:62:	if (ivalue >= game->a.len / 2)
+utils3.c:64:		while (game->a.prem != value)
+utils3.c:69:		while (game->a.prem != value)
+utils3.c:79:	ivalue = check_value(&game->b, value);
+utils3.c:80:	if (ivalue == game->b.len)
+utils3.c:82:	if (ivalue >= game->b.len / 2)
+utils3.c:84:		while (game->b.prem != value)
+utils3.c:89:		while (game->b.prem != value)
+utils4.c:20:	imin = check_value(&game->b, game->b.min);
+utils4.c:21:	imax = check_value(&game->b, game->b.max);
+utils4.c:22:	if (imin < game->b.len / 2)
+utils4.c:25:		imin = game->b.len - imin - 1;
+utils4.c:26:	if (imax < game->b.len / 2)
+utils4.c:29:		imax = game->b.len - imax - 1;
+utils4.c:30:	if (game->b.len == 2 && game->a.len <= 14)
+utils4.c:31:			return(game->b.max);
+utils4.c:33:		return (game->b.max);
+utils4.c:34:	return (game->b.min);
+utils4.c:42:		(game->a.prem > game->b.min && game->b.len > 0))
+utils4.c:44:	if (game->a.prem == game->a.min)
+utils4.c:46:		game->a.fsort = 1;
+utils4.c:50:	count = check_value(&game->a, game->a.min) + 1;
+utils4.c:51:	while (count < game->a.len - 1)
+utils4.c:53:		if (game->a.ptr[count] < game->a.prem)
+utils4.c:57:	game->a.fmax = game->a.prem;
+utils4.c:66:	while (game->b.len > 0)
+utils4.c:79:	while (game->b.len >= 14 &&
+utils4.c:80:		check_borne(&game->b, bornemin, game->b.max) >= 1)
+utils4.c:82:		if ((game->b.prem >= bornemin &&
+utils4.c:83:			game->b.prem <= game->b.max) || game->b.prem == game->b.min)
+utils4.c:92:	aborneur(game, game->a.fmax + 1, bornemax);
+utils4.c:99:	while (check_borne(&game->a, bornemin, bornemax) >= 1)
+utils4.c:101:		if (game->a.prem >= bornemin && game->a.prem <= bornemax)
+utils4.c:106:	if (game->a.fsort == 1)
+utils4.c:108:		while (game->a.dern != game->a.fmax)
+utils4.c:111:	bborneur(game, is_median(&game->b), bornemax);

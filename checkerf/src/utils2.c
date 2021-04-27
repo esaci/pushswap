@@ -41,6 +41,8 @@ int		checker(int argc, char **argv, t_game *game, int count2)
 				game->flag[1] = 1;
 			else if (argv[game->count][count2] == 'f')
 				game->flag[2] = 1;
+			else if (argv[game->count][count2] == 'e')
+				game->flag[5] = 1;
 			else
 				return (0);
 			count2++;

@@ -33,7 +33,7 @@ typedef struct	s_stack
 
 typedef struct	s_game
 {
-	int			flag[4];
+	int			flag[6];
 	int			count;
 	int			fd;
 	char		*str;

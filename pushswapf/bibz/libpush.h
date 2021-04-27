@@ -43,6 +43,10 @@ typedef struct	s_game
 	size_t		size;
 	t_stack		a;
 	t_stack		b;
+	int			rac;
+	int			rbc;
+	int			rrac;
+	int			rrbc;
 }				t_game;
 
 void			stack_init(t_stack *s);
@@ -62,4 +66,5 @@ size_t			check_value(t_stack *stack, int value);
 int				check_borne(t_stack *s, int min, int max);
 void			aborneur(t_game *game, int bornemin, int bornemax);
 void			tech_pquinze(t_game *game);
+int				gestrr(t_game *game, char *str);
 #endif

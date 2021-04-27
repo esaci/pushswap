@@ -50,7 +50,7 @@ void		updatelist(t_game *game, char *str)
 		str2[i] = game->str[i];
 		i++;
 	}
-	y = 0;
+	y = gestrr(game, str);
 	while (y < ft_strlen(str))
 	{
 		str2[i + y] = str[y];
@@ -105,15 +105,15 @@ void	tech_pquinze(t_game *game)
 	int		bornemax;
 	int		bornemin;
 
+	bornemin = game->a.min;
 	game->a.fsort = 0;
 	game->b.fsort = 0;
-	bornemin = game->a.min;
 	while (is_good(game) < 1)
 	{
 		bornemax = is_median(&game->a);
 		if (bornemax == bornemin)
 		{
-			if (game->a.prem > game->a.ptr[game->a.len - 2])
+			if (game->a.ptr[game->a.len - 1] > game->a.ptr[game->a.len - 2])
 				updatelist(game, "sa");
 			updatelist(game, "ra");
 			updatelist(game, "ra");

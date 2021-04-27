@@ -20,13 +20,15 @@ int		minormax(t_game *game)
 	imin = check_value(&game->b, game->b.min);
 	imax = check_value(&game->b, game->b.max);
 	if (imin < game->b.len / 2)
-		imin += 1;
+		imin++;
 	else
 		imin = game->b.len - imin - 1;
 	if (imax < game->b.len / 2)
-		imax += 1;
+		imax++;
 	else
 		imax = game->b.len - imax - 1;
+	if (game->b.len == 2 && game->a.len <= 14)
+			return(game->b.max);
 	if (imax < imin)
 		return (game->b.max);
 	return (game->b.min);
@@ -36,8 +38,8 @@ void	new_min(t_game *game)
 {
 	size_t	count;
 
-	if ((game->a.prem > game->b.min && game->b.len > 0)
-		|| is_goodsansb(game) == 1)
+	if (is_goodsansb(game) == 1 ||
+		(game->a.prem > game->b.min && game->b.len > 0))
 		return ;
 	if (game->a.prem == game->a.min)
 	{
@@ -74,8 +76,8 @@ void	bborneur(t_game *game, int bornemin, int bornemax)
 {
 	if (!(bornemin < bornemax))
 		return ;
-	while (game->b.len >= 12 &&
-		check_borne(&game->b, bornemin, game->b.max) == 1)
+	while (game->b.len >= 14 &&
+		check_borne(&game->b, bornemin, game->b.max) >= 1)
 	{
 		if ((game->b.prem >= bornemin &&
 			game->b.prem <= game->b.max) || game->b.prem == game->b.min)
@@ -94,7 +96,7 @@ void	aborneur(t_game *game, int bornemin, int bornemax)
 {
 	if (!(bornemin < bornemax))
 		return ;
-	while (check_borne(&game->a, bornemin, bornemax) == 1)
+	while (check_borne(&game->a, bornemin, bornemax) >= 1)
 	{
 		if (game->a.prem >= bornemin && game->a.prem <= bornemax)
 			updatelist(game, "pb");

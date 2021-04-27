@@ -51,7 +51,7 @@ int		is_median(t_stack *stack)
 	else
 		imin = 0;
 	reststack = stack->len - imin;
-	if (reststack < 2)
+	if (reststack == 1)
 		return (stack->ptr[stack->len - 1]);
 	count = imin;
 	while (count < stack->len)
