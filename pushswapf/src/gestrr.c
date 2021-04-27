@@ -12,77 +12,85 @@
 
 #include "../bibz/libpush.h"
 
-void	ft_clear(t_game *game, char *str)
+int		ft_clear(t_game *game)
 {
 	int		i;
 	int		s;
-	int		y;
 
-	i = ft_strlen(game->str) - 1;
-	s = ft_strlen(str);
+	if (game->temp[0] == '\0')
+		return (0);
+	i = ft_strlen(game->str);
+	s = ft_strlen(game->temp);
 	while (i > s)
 	{
-		if (ft_strncmp(str, (game->str + i - s), s))
+		if (ft_strncmp(game->temp, (game->str + i - s), s) == s)
 		{
-			y = 0;
-			while(y < s)
-			{
-				game->str[i - y] = 0;
-				y++;
-			}
+			game->temp[0] = '\0';
+			game->temp[1] = '\0';
+			return (i + s);
 		}
 		i--;
 	}
+	return (0);
 }
 
-void	optirr(t_game *game, char *str)
+char	*optirr(t_game *game, char *str)
 {
 	if (game->rbc == 0 && str[1] == 'a')
-		game->rbc = 1;
+		game->rac += 1;
 	else if (game->rbc >= 1 && str[1] == 'a')
 	{
-		ft_clear(game, "rb");
-		str[1] = 'r';
 		game->rbc--;
+		game->temp[0] = 'b';
+		return("rr");
 	}
 	if (game->rac == 0 && str[1] == 'b')
-		game->rac = 1;
+		game->rbc += 1;
 	else if (game->rac >= 1 && str[1] == 'b')
 	{
-		ft_clear(game, "ra");
-		str[1] = 'r';
 		game->rac--;
+		game->temp[0] = 'a';
+		return("rr");
 	}
+	return (str);
 }
 
-void	optirrr(t_game *game, char *str)
+char	*optirrr(t_game *game, char *str)
 {
 	if (game->rrbc == 0 && str[2] == 'a')
-		game->rrbc = 1;
+		game->rrac += 1;
 	else if (game->rrbc >= 1 && str[2] == 'a')
 	{
-		ft_clear(game, "rrb");
-		str[2] = 'r';
 		game->rrbc--;
+		game->temp[0] = 'r';
+		game->temp[1] = 'b';
+		return("rrr");
 	}
 	if (game->rrac == 0 && str[2] == 'b')
-		game->rrac = 1;
+		game->rrbc += 1;
 	else if (game->rrac >= 1 && str[2] == 'b')
 	{
-		ft_clear(game, "rra");
-		str[2] = 'r';
 		game->rrac--;
+		game->temp[0] = 'r';
+		game->temp[1] = 'a';
+		return("rrr");
 	}
+	return(str);
 }
 
-int		gestrr(t_game *game, char *str)
+char	*gestrr(t_game *game, char *str)
 {
+	game->temp[0] = '\0';
+	game->temp[1] = '\0';
 	if (str[0] == 'r')
 	{
 		if (str[1] == 'r')
-			optirrr(game, str);
-		else
-			optirr(game, str);
+			return(optirrr(game, str));
+		return(optirr(game, str));
 	}
-	return(0);
+	game->rac = 0;
+	game->rrac = 0;
+	game->rbc = 0;
+	game->rrbc = 0;
+	return(str);
 }
