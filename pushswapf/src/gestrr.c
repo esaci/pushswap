@@ -12,7 +12,7 @@
 
 #include "../bibz/libpush.h"
 
-void	ft_clear(char *str, char *str2)
+void	ft_clear(char *str, char *str2, int s)
 {
 	int		i;
 	int		y;
@@ -22,7 +22,7 @@ void	ft_clear(char *str, char *str2)
 	j = 0;
 	while (i > 0)
 	{
-		if (ft_strncmp(str2 + i, str, ft_strlen(str)) == 0 && j <= 3)
+		if (ft_strncmp(str2 + i, str, s) == 0 && j <= 3)
 		{
 			y = 0;
 			while(str2[y + i] == str[y])
@@ -74,7 +74,7 @@ char	*optirr(t_game *game, char *str, char *str2)
 	}
 	if (game->rbc >= 1 && str[1] == 'a')
 	{
-		ft_clear("rb", str2);
+		ft_clear("rb", str2, 2);
 		game->rbc--;
 		return("rr");
 	}
@@ -85,7 +85,7 @@ char	*optirr(t_game *game, char *str, char *str2)
 	}
 	if (game->rac >= 1 && str[1] == 'b')
 	{
-		ft_clear("ra", str2);
+		ft_clear("ra", str2, 2);
 		game->rac--;
 		return("rr");
 	}
@@ -101,7 +101,7 @@ char	*optirrr(t_game *game, char *str, char *str2)
 	}
 	if (game->rrbc >= 1 && str[2] == 'a')
 	{
-		ft_clear("rrb", str2);
+		ft_clear("rrb", str2, 3);
 		game->rrbc--;
 		return("rrr");
 	}
@@ -112,7 +112,7 @@ char	*optirrr(t_game *game, char *str, char *str2)
 	}
 	if (game->rrac >= 1 && str[2] == 'b')
 	{
-		ft_clear("rra", str2);
+		ft_clear("rra", str2, 3);
 		game->rrac--;
 		return("rrr");
 	}
