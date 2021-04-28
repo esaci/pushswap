@@ -47,7 +47,7 @@ int		*listeur(int *list, int len, char *line, char **action)
 	y = 0;
 	while (action[y])
 	{
-		if (!ft_strncmp(line, action[y], 3))
+		if (!ft_strncmp(line, action[y], ft_strlen(line)))
 			break ;
 		y++;
 	}

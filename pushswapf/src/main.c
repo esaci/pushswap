@@ -118,6 +118,7 @@ int			main(int argc, char **argv)
 		free(game.b.ptr);
 		game.rrbc = ft_clear2(&game);
 		write(game.fd, game.str, game.rrbc);
+/* 		write(game.fd, game.str, ft_strlen(game.str)); */
 		free(game.str);
 	}
 	return (0);

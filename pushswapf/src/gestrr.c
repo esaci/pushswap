@@ -15,25 +15,26 @@
 void	ft_clear(char *str, char *str2)
 {
 	int		i;
-	int		s;
 	int		y;
+	int		j;
 
-	i = ft_strlen(str2) - 1;
-	s = ft_strlen(str);
-	while (i > s)
+	i = ft_strlen(str2);
+	j = 0;
+	while (i > 0)
 	{
-		if (ft_strncmp(str, (str2 + i - s), s) == 0)
+		if (ft_strncmp(str2 + i, str, ft_strlen(str)) == 0 && j <= 3)
 		{
 			y = 0;
-			while(y < s)
+			while(str2[y + i] == str[y])
 			{
-				str2[i - s + y] = 'e';
+				str2[y + i] = 'e';
 				y++;
 			}
-			return ;
+			j++;
 		}
 		i--;
 	}
+
 }
 
 int		ft_clear2(t_game *game)
@@ -58,7 +59,7 @@ int		ft_clear2(t_game *game)
 		y++;
 		i++;
 	}
-	str[y] = 0;
+	str[y] = '\0';
 	free(game->str);
 	game->str = str;
 	return (y);
@@ -67,16 +68,22 @@ int		ft_clear2(t_game *game)
 char	*optirr(t_game *game, char *str, char *str2)
 {
 	if (game->rbc == 0 && str[1] == 'a')
+	{
 		game->rac += 1;
-	else if (game->rbc >= 1 && str[1] == 'a')
+		return(str);
+	}
+	if (game->rbc >= 1 && str[1] == 'a')
 	{
 		ft_clear("rb", str2);
 		game->rbc--;
 		return("rr");
 	}
 	if (game->rac == 0 && str[1] == 'b')
+	{
 		game->rbc += 1;
-	else if (game->rac >= 1 && str[1] == 'b')
+		return(str);
+	}
+	if (game->rac >= 1 && str[1] == 'b')
 	{
 		ft_clear("ra", str2);
 		game->rac--;
@@ -88,16 +95,22 @@ char	*optirr(t_game *game, char *str, char *str2)
 char	*optirrr(t_game *game, char *str, char *str2)
 {
 	if (game->rrbc == 0 && str[2] == 'a')
+	{
 		game->rrac += 1;
-	else if (game->rrbc >= 1 && str[2] == 'a')
+		return (str);
+	}
+	if (game->rrbc >= 1 && str[2] == 'a')
 	{
 		ft_clear("rrb", str2);
 		game->rrbc--;
 		return("rrr");
 	}
 	if (game->rrac == 0 && str[2] == 'b')
+	{
 		game->rrbc += 1;
-	else if (game->rrac >= 1 && str[2] == 'b')
+		return(str);
+	}
+	if (game->rrac >= 1 && str[2] == 'b')
 	{
 		ft_clear("rra", str2);
 		game->rrac--;
