@@ -25,7 +25,7 @@ void	ft_clear(char *str, char *str2, int s)
 		if (ft_strncmp(str2 + i, str, s) == 0 && j <= 3)
 		{
 			y = 0;
-			while(str2[y + i] == str[y])
+			while(str2[y + i] == str[y] && y < s)
 			{
 				str2[y + i] = 'e';
 				y++;
