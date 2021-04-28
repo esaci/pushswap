@@ -108,11 +108,10 @@ void	tech_pquinze(t_game *game)
 
 	bornemin = game->a.min;
 	game->a.fsort = 0;
-	game->b.fsort = 0;
 	while (is_good(game) < 1)
 	{
 		bornemax = is_median(&game->a);
-		if (bornemax == bornemin)
+		if (bornemax <= bornemin)
 		{
 			if (game->a.ptr[game->a.len - 1] > game->a.ptr[game->a.len - 2])
 				updatelist(game, "sa");

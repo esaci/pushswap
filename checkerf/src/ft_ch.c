@@ -59,6 +59,7 @@ void	ft_ch(t_game *game, int len, char **action)
 {
 	char		*line;
 	int			*list;
+	int			i;
 
 	if (!(list = malloc(sizeof(int) * 2)))
 	{
@@ -66,6 +67,7 @@ void	ft_ch(t_game *game, int len, char **action)
 		exit(1);
 	}
 	list[0] = 0;
+	i = 0;
 	while (get_next_line(game->fd, &line))
 	{
 		if (!checkaction(line, action))
@@ -74,6 +76,7 @@ void	ft_ch(t_game *game, int len, char **action)
 			free(line);
 			return ;
 		}
+		i++;
 		list = listeur(list, len, line, action);
 		len++;
 		free(line);

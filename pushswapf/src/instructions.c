@@ -67,7 +67,7 @@ void rotate(t_stack *s)
 		s->ptr[i] = s->ptr[i - 1];
 		i--;
 	}
-	s->ptr[i] = temp;
+	s->ptr[0] = temp;
 	stack_update(s, 0);
 }
 

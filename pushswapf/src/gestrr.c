@@ -22,18 +22,46 @@ void	ft_clear(char *str, char *str2)
 	s = ft_strlen(str);
 	while (i > s)
 	{
-		if (ft_strncmp(str, (str2 + i - s), s))
+		if (ft_strncmp(str, (str2 + i - s), s) == 0)
 		{
 			y = 0;
-			while(y < (s - 1))
+			while(y < s)
 			{
-				str2[i - y] = 'e';
+				str2[i - s + y] = 'e';
 				y++;
 			}
 			return ;
 		}
 		i--;
 	}
+}
+
+int		ft_clear2(t_game *game)
+{
+	size_t		i;
+	size_t		y;
+	char		*str;
+
+	i = ft_strlen(game->str) - 1;
+	if (!(str = malloc(sizeof(char)* (i + 1))))
+		exit(1);
+	i = 0;
+	y = 0;
+	while (i < (ft_strlen(game->str)))
+	{
+		if (game->str[i] == 'e')
+		{
+			while(game->str[i] == 'e' || game->str[i] == '\n')
+				i++;
+		}
+		str[y] = game->str[i];
+		y++;
+		i++;
+	}
+	str[y] = 0;
+	free(game->str);
+	game->str = str;
+	return (y);
 }
 
 char	*optirr(t_game *game, char *str, char *str2)
@@ -87,5 +115,9 @@ char	*gestrr(t_game *game, char *str, char *str2)
 		else
 			return(optirr(game, str, str2));
 	}
+	game->rac = 0;
+	game->rrac = 0;
+	game->rbc = 0;
+	game->rrbc = 0;
 	return(str);
 }

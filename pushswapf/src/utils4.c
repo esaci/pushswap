@@ -80,7 +80,7 @@ void	bborneur(t_game *game, int bornemin, int bornemax)
 		check_borne(&game->b, bornemin, game->b.max) >= 1)
 	{
 		if ((game->b.prem >= bornemin &&
-			game->b.prem <= game->b.max) || game->b.prem == game->b.min)
+			game->b.prem <= game->a.max) || game->b.prem == game->b.min)
 		{
 			updatelist(game, "pa");
 			new_min(game);
@@ -106,7 +106,7 @@ void	aborneur(t_game *game, int bornemin, int bornemax)
 	if (game->a.fsort == 1)
 	{
 		while (game->a.dern != game->a.fmax)
-			updatelist(game, "ra");
+			updatelist(game, "rra");
 	}
 	bborneur(game, is_median(&game->b), bornemax);
 }

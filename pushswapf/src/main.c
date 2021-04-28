@@ -110,13 +110,14 @@ int			main(int argc, char **argv)
 			return (1);
 		}
 		game.b.len = 0;
-		if (is_good(&game) <= 0)
+		if (is_good(&game) < 1)
 			algo(&game);
 		if (game.fd > 1)
 			close(game.fd);
 		free(game.a.ptr);
 		free(game.b.ptr);
-		write(game.fd, game.str, ft_strlen(game.str));
+		game.rrbc = ft_clear2(&game);
+		write(game.fd, game.str, game.rrbc);
 		free(game.str);
 	}
 	return (0);

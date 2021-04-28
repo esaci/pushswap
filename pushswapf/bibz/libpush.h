@@ -67,4 +67,5 @@ int				check_borne(t_stack *s, int min, int max);
 void			aborneur(t_game *game, int bornemin, int bornemax);
 void			tech_pquinze(t_game *game);
 char			*gestrr(t_game *game, char *str, char *str2);
+int				ft_clear2(t_game *game);
 #endif
