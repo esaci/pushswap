@@ -48,7 +48,6 @@ int			doublon_int(t_stack *a)
 	return (1);
 }
 
-
 void		game_init2(t_game *game, int argc, char **argv)
 {
 	game->a.ptr = readlist(argc, argv, game->count);
@@ -84,13 +83,6 @@ void		game_init(int argc, char **argv, t_game *game)
 		write(2, "Mauvaises Options\n", 14);
 		exit(1);
 	}
-	if (game->flag[2] == 1)
-		game->fd = open(game->str, O_RDONLY);
-	if (game->fd < 0)
-	{
-		write(2, "Fichier non lu\n", 15);
-		exit(1);
-	}
 	game_init2(game, argc, argv);
 }
 
@@ -113,8 +105,6 @@ int			main(int argc, char **argv)
 		game.b.len = 0;
 		if (is_good(&game) < 1)
 			algo(&game);
-		if (game.fd > 1)
-			close(game.fd);
 		free(game.a.ptr);
 		free(game.b.ptr);
 		game.rrbc = ft_clear2(&game);

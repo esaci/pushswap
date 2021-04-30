@@ -36,23 +36,21 @@ void		stack_update(t_stack *s, int i)
 
 void		updatelist(t_game *game, char *str)
 {
-	size_t		len;
 	char		*str2;
 	size_t		i;
 	size_t		y;
 
-	ft_lecteur(str, game);
-	len = ft_strlen(game->str);
-	if (!(str2 = malloc(sizeof(char) * (len + ft_strlen(str) + 3))))
+	i = ft_strlen(game->str);
+	if (!(str2 = malloc(sizeof(char) * (i + ft_strlen(str) + 3))))
 		exit(1);
 	i = 0;
-	while (i < len)
+	while (i < ft_strlen(game->str))
 	{
 		str2[i] = game->str[i];
 		i++;
 	}
 	str2[i] = '\0';
-	y = 0;
+	y = ft_lecteur(str, game);
 	str = gestrr(game, str, str2);
 	while (y < ft_strlen(str))
 	{
@@ -89,7 +87,7 @@ void		tech_trois(t_game *game)
 	}
 }
 
-void	tech_mquinze(t_game *game)
+void		tech_mquinze(t_game *game)
 {
 	while (game->a.len > 3)
 	{
@@ -102,7 +100,7 @@ void	tech_mquinze(t_game *game)
 		updatelist(game, "pa");
 }
 
-void	tech_pquinze(t_game *game)
+void		tech_pquinze(t_game *game)
 {
 	int		bornemax;
 	int		bornemin;

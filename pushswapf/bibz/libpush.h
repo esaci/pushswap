@@ -54,7 +54,7 @@ void			stack_update(t_stack *s, int i);
 int				*readlist(int argc, char **argv, int count);
 int				checker(int argc, char **argv, t_game *game, int count1);
 int				is_good(t_game *game);
-void			ft_lecteur(char *inst, t_game *game);
+int				ft_lecteur(char *inst, t_game *game);
 void			updatelist(t_game *game, char *str);
 void			tech_trois(t_game *game);
 int				value_premiera(int value, t_game *game);

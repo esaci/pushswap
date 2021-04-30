@@ -12,26 +12,27 @@
 
 #include "../bibz/libpush.h"
 
-void	swap(t_stack *stack)
+int		swap(t_stack *stack)
 {
 	int temp;
 
 	if (stack->len <= 1)
-		return ;
+		return (0);
 	temp = stack->ptr[stack->len - 2];
 	stack->ptr[stack->len - 2] = stack->ptr[stack->len - 1];
 	stack->ptr[stack->len - 1] = temp;
 	stack->prem = temp;
 	stack_update(stack, 0);
+	return (0);
 }
 
-void	push(t_stack *d, t_stack *s)
+int		push(t_stack *d, t_stack *s)
 {
 	int			*nptr;
 	size_t		i;
 
 	if (s->len <= 0)
-		return ;
+		return (0);
 	if (d->flag == 1)
 	{
 		if (!(nptr = malloc(sizeof(int) * (d->len + 1))))
@@ -51,15 +52,16 @@ void	push(t_stack *d, t_stack *s)
 	d->ptr[d->len] = s->ptr[s->len - 1];
 	stack_update(s, -1);
 	stack_update(d, 1);
+	return (0);
 }
 
-void	rotate(t_stack *s)
+int		rotate(t_stack *s)
 {
 	int			temp;
 	size_t		i;
 
 	if (s->len <= 1)
-		return ;
+		return (0);
 	i = s->len - 1;
 	temp = s->ptr[i];
 	while (i > 0)
@@ -69,15 +71,16 @@ void	rotate(t_stack *s)
 	}
 	s->ptr[0] = temp;
 	stack_update(s, 0);
+	return (0);
 }
 
-void	reverserotate(t_stack *stack)
+int		reverserotate(t_stack *stack)
 {
 	int			temp;
 	size_t		i;
 
 	if (stack->len <= 1)
-		return ;
+		return (0);
 	temp = stack->ptr[0];
 	i = 0;
 	while (i < stack->len - 1)
@@ -87,9 +90,10 @@ void	reverserotate(t_stack *stack)
 	}
 	stack->ptr[i] = temp;
 	stack_update(stack, 0);
+	return (0);
 }
 
-void	ft_lecteur(char *inst, t_game *game)
+int		ft_lecteur(char *inst, t_game *game)
 {
 	if (!ft_strncmp(inst, "sa", 2))
 		return (swap(&game->a));
@@ -110,8 +114,8 @@ void	ft_lecteur(char *inst, t_game *game)
 	else if (!ft_strncmp(inst, "rrr", 3))
 	{
 		reverserotate(&game->a);
-		reverserotate(&game->b);
+		return (reverserotate(&game->b));
 	}
 	rotate(&game->a);
-	rotate(&game->b);
+	return (rotate(&game->b));
 }
