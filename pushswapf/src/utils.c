@@ -51,6 +51,7 @@ void		updatelist(t_game *game, char *str)
 		str2[i] = game->str[i];
 		i++;
 	}
+	str2[i] = '\0';
 	y = 0;
 	str = gestrr(game, str, str2);
 	while (y < ft_strlen(str))

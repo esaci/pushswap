@@ -12,28 +12,30 @@
 
 #include "../bibz/libpush.h"
 
-void	ft_clear(char *str, char *str2, int s)
+int		ft_clear(char *str, char *str2, int s)
 {
 	int		i;
 	int		y;
 	int		j;
 
-	i = ft_strlen(str2);
+	i = ft_strlen(str2) - s - 1;
 	j = 0;
 	while (i > 0)
 	{
-		if (ft_strncmp(str2 + i, str, s) == 0 && j <= 3)
+		if (ft_strncmp(str2 + i, str, s) == 0)
 		{
 			y = 0;
-			while(str2[y + i] == str[y] && y < s)
+			while(y < s)
 			{
 				str2[y + i] = 'e';
 				y++;
 			}
 			j++;
+			return (1);
 		}
 		i--;
 	}
+	return (0);
 
 }
 
@@ -44,7 +46,7 @@ int		ft_clear2(t_game *game)
 	char		*str;
 
 	i = ft_strlen(game->str) - 1;
-	if (!(str = malloc(sizeof(char)* (i + 1))))
+	if (!(str = malloc(sizeof(char)* (i + 2))))
 		exit(1);
 	i = 0;
 	y = 0;

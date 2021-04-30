@@ -114,5 +114,5 @@ void	optionv(t_game *game, char **action, int *list, int count)
 		printf("\n");
 		i--;
 	}
-	usleep(30000);
+	usleep(900000);
 }

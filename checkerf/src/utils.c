@@ -71,17 +71,22 @@ void	reverserotate(t_stack *stack)
 
 void	ft_lecteur(char *inst, t_game *game)
 {
-	if (!ft_strncmp(inst, "sa", 2))
+	if (!ft_strncmp(inst, "sa", 3))
 		return (swap(&game->a));
-	else if (!ft_strncmp(inst, "sb", 2))
+	else if (!ft_strncmp(inst, "sb", 3))
 		return (swap(&game->b));
-	else if (!ft_strncmp(inst, "pa", 2))
+	else if (!ft_strncmp(inst, "pa", 3))
 		return (push(&game->b, &game->a));
-	else if (!ft_strncmp(inst, "ra", 2))
+	else if (!ft_strncmp(inst, "ra", 3))
 		return (rotate(&game->a));
-	else if (!ft_strncmp(inst, "rb", 2))
+	else if (!ft_strncmp(inst, "rb", 3))
 		return (rotate(&game->b));
-	else if (!ft_strncmp(inst, "pb", 2))
+	else if (!ft_strncmp(inst, "rr", 3))
+	{
+		rotate(&game->a);
+		return(rotate(&game->b));
+	}
+	else if (!ft_strncmp(inst, "pb", 3))
 		return (push(&game->a, &game->b));
 	else if (!ft_strncmp(inst, "rra", 3))
 		return (reverserotate(&game->a));
@@ -92,6 +97,4 @@ void	ft_lecteur(char *inst, t_game *game)
 		reverserotate(&game->a);
 		reverserotate(&game->b);
 	}
-	rotate(&game->a);
-	rotate(&game->b);
 }
