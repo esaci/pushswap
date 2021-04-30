@@ -27,8 +27,6 @@ int		minormax(t_game *game)
 		imax++;
 	else
 		imax = game->b.len - imax - 1;
-	/* if (game->b.len == 2 && game->a.len <= 14)
-			return(game->b.max); */
 	if (imax < imin)
 		return (game->b.max);
 	return (game->b.min);
@@ -38,10 +36,16 @@ void	new_min(t_game *game)
 {
 	size_t	count;
 
-	if (is_goodsansb(game) == 1 ||
+	if (game->a.prem <= game->a.min && game->a.fsort == 0 && game->a.len + game->b.len <= 16)
+	{
+		game->a.fsort = 1;
+		updatelist(game, "ra");
+		return (new_min(game));
+	}
+	if ((is_goodsansb(game) == 1)||
 		(game->a.prem > game->b.min && game->b.len > 0))
 		return ;
-	if (game->a.prem == game->a.min)
+	if (game->a.prem <= game->a.min)
 	{
 		game->a.fsort = 1;
 		updatelist(game, "ra");
@@ -98,6 +102,7 @@ void	aborneur(t_game *game, int bornemin, int bornemax)
 		return ;
 	while (check_borne(&game->a, bornemin, bornemax) == 1)
 	{
+		stack_update(&game->a, 0);
 		if (game->a.prem >= bornemin && game->a.prem <= bornemax)
 			updatelist(game, "pb");
 		else
