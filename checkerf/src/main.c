@@ -23,8 +23,6 @@ void		game_init(int argc, char **argv, t_game *game, int i)
 		write(2, "Mauvaises Options\n", 14);
 		exit(1);
 	}
-	if (game->flag[2] == 1)
-		game->fd = open(game->str, O_RDONLY);
 	if (game->fd < 0)
 	{
 		write(2, "Fichier non lu\n", 15);
@@ -78,8 +76,6 @@ int			main(int argc, char **argv)
 		}
 		game.b.len = 0;
 		ft_ch(&game, 0, createaction());
-		if (game.fd > 0)
-			close(game.fd);
 		free(game.a.ptr);
 		free(game.b.ptr);
 	}

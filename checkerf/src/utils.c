@@ -84,7 +84,7 @@ void	ft_lecteur(char *inst, t_game *game)
 	else if (!ft_strncmp(inst, "rr", 3))
 	{
 		rotate(&game->a);
-		return(rotate(&game->b));
+		return (rotate(&game->b));
 	}
 	else if (!ft_strncmp(inst, "pb", 3))
 		return (push(&game->a, &game->b));
@@ -92,9 +92,6 @@ void	ft_lecteur(char *inst, t_game *game)
 		return (reverserotate(&game->a));
 	else if (!ft_strncmp(inst, "rrb", 3))
 		return (reverserotate(&game->b));
-	else if (!ft_strncmp(inst, "rrr", 3))
-	{
-		reverserotate(&game->a);
-		reverserotate(&game->b);
-	}
+	reverserotate(&game->a);
+	reverserotate(&game->b);
 }

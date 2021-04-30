@@ -83,23 +83,10 @@ char	**createaction(void)
 	return (action);
 }
 
-void	optionv(t_game *game, char **action, int *list, int count)
+void	optionv2(t_game *game)
 {
 	int		i;
 
-	if (game->flag[5] == 1)
-	{
-		printf("\e[H\e[2J");
-		printf("---%d-----\n", count + 1);
-		return ;
-	}
-	if (game->flag[1] != 1)
-		return ;
-	printf("\e[H\e[2J");
-	printf("---%d-----\n", count + 1);
-	printf("\e[1;34m%s\e[0m", action[list[count]]);
-	while (count > 0)
-		printf(" %s", action[list[count--]]);
 	printf(" \n");
 	printf("%11c   %-11c\n", 'a', 'b');
 	i = (int)game->a.len - 1;
@@ -114,5 +101,23 @@ void	optionv(t_game *game, char **action, int *list, int count)
 		printf("\n");
 		i--;
 	}
-	usleep(900000);
+	usleep(30000);
+}
+
+void	optionv(t_game *game, char **action, int *list, int count)
+{
+	if (game->flag[5] == 1)
+	{
+		printf("\e[H\e[2J");
+		printf("---%d-----\n", count + 1);
+		return ;
+	}
+	if (game->flag[1] != 1)
+		return ;
+	printf("\e[H\e[2J");
+	printf("---%d-----\n", count + 1);
+	printf("\e[1;34m%s\e[0m", action[list[count]]);
+	while (count > 0)
+		printf(" %s", action[list[count--]]);
+	optionv2(game);
 }

@@ -66,7 +66,6 @@ void	ft_ch(t_game *game, int len, char **action)
 		write(2, "Erreur malloc\n", 14);
 		exit(1);
 	}
-	list[0] = 0;
 	i = 0;
 	while (get_next_line(game->fd, &line))
 	{
