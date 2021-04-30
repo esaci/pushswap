@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBCHECK_H
-# define LIBCHECK_H
+#ifndef LIBPUSH_H
+# define LIBPUSH_H
 
-#include "../../fct/libft/libft.h"
-#include "../../fct/GNL/get_next_line.h"
+# include "../../fct/libft/libft.h"
+# include "../../fct/GNL/get_next_line.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>

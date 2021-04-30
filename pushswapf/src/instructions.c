@@ -12,7 +12,7 @@
 
 #include "../bibz/libpush.h"
 
-void swap(t_stack *stack)
+void	swap(t_stack *stack)
 {
 	int temp;
 
@@ -25,7 +25,7 @@ void swap(t_stack *stack)
 	stack_update(stack, 0);
 }
 
-void push(t_stack *d, t_stack *s)
+void	push(t_stack *d, t_stack *s)
 {
 	int			*nptr;
 	size_t		i;
@@ -53,10 +53,10 @@ void push(t_stack *d, t_stack *s)
 	stack_update(d, 1);
 }
 
-void rotate(t_stack *s)
+void	rotate(t_stack *s)
 {
-	int temp;
-	size_t i;
+	int			temp;
+	size_t		i;
 
 	if (s->len <= 1)
 		return ;
@@ -71,10 +71,10 @@ void rotate(t_stack *s)
 	stack_update(s, 0);
 }
 
-void reverserotate(t_stack *stack)
+void	reverserotate(t_stack *stack)
 {
-	int 	temp;
-	size_t 	i;
+	int			temp;
+	size_t		i;
 
 	if (stack->len <= 1)
 		return ;
@@ -89,7 +89,7 @@ void reverserotate(t_stack *stack)
 	stack_update(stack, 0);
 }
 
-void ft_lecteur(char *inst, t_game *game)
+void	ft_lecteur(char *inst, t_game *game)
 {
 	if (!ft_strncmp(inst, "sa", 2))
 		return (swap(&game->a));
@@ -112,9 +112,6 @@ void ft_lecteur(char *inst, t_game *game)
 		reverserotate(&game->a);
 		reverserotate(&game->b);
 	}
-	else if (!ft_strncmp(inst, "rr", 2))
-	{
-		rotate(&game->a);
-		return (rotate(&game->b));
-	}
+	rotate(&game->a);
+	rotate(&game->b);
 }

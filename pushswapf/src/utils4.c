@@ -32,35 +32,33 @@ int		minormax(t_game *game)
 	return (game->b.min);
 }
 
-void	new_min(t_game *game)
+void	new_min(t_game *g, size_t count)
 {
-	size_t	count;
-
-	if (game->a.prem <= game->a.min && game->a.fsort == 0 && game->a.len + game->b.len <= 16)
+	if (g->a.prem <= g->a.min && !g->a.fsort && g->a.len + g->b.len <= 16)
 	{
-		game->a.fsort = 1;
-		updatelist(game, "ra");
-		return (new_min(game));
+		g->a.fsort = 1;
+		updatelist(g, "ra");
+		return (new_min(g, 0));
 	}
-	if ((is_goodsansb(game) == 1)||
-		(game->a.prem > game->b.min && game->b.len > 0))
+	if ((is_goodsansb(g) == 1) ||
+		(g->a.prem > g->b.min && g->b.len > 0))
 		return ;
-	if (game->a.prem <= game->a.min)
+	if (g->a.prem <= g->a.min)
 	{
-		game->a.fsort = 1;
-		updatelist(game, "ra");
-		return (new_min(game));
+		g->a.fsort = 1;
+		updatelist(g, "ra");
+		return (new_min(g, 0));
 	}
-	count = check_value(&game->a, game->a.min) + 1;
-	while (count < game->a.len - 1)
+	count = check_value(&g->a, g->a.min) + 1;
+	while (count < g->a.len - 1)
 	{
-		if (game->a.ptr[count] < game->a.prem)
+		if (g->a.ptr[count] < g->a.prem)
 			return ;
 		count++;
 	}
-	game->a.fmax = game->a.prem;
-	updatelist(game, "ra");
-	return (new_min(game));
+	g->a.fmax = g->a.prem;
+	updatelist(g, "ra");
+	return (new_min(g, 0));
 }
 
 void	fullpushb(t_game *game)
@@ -72,7 +70,7 @@ void	fullpushb(t_game *game)
 		temp = minormax(game);
 		value_premierb(temp, game);
 		updatelist(game, "pa");
-		new_min(game);
+		new_min(game, 0);
 	}
 }
 
@@ -87,7 +85,7 @@ void	bborneur(t_game *game, int bornemin, int bornemax)
 			game->b.prem <= game->a.max) || game->b.prem == game->b.min)
 		{
 			updatelist(game, "pa");
-			new_min(game);
+			new_min(game, 0);
 		}
 		else
 			updatelist(game, "rb");

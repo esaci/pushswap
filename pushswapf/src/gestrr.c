@@ -25,7 +25,7 @@ int		ft_clear(char *str, char *str2, int s)
 		if (ft_strncmp(str2 + i, str, s) == 0)
 		{
 			y = 0;
-			while(y < s)
+			while (y < s)
 			{
 				str2[y + i] = 'e';
 				y++;
@@ -36,7 +36,6 @@ int		ft_clear(char *str, char *str2, int s)
 		i--;
 	}
 	return (0);
-
 }
 
 int		ft_clear2(t_game *game)
@@ -46,7 +45,7 @@ int		ft_clear2(t_game *game)
 	char		*str;
 
 	i = ft_strlen(game->str) - 1;
-	if (!(str = malloc(sizeof(char)* (i + 2))))
+	if (!(str = malloc(sizeof(char) * (i + 2))))
 		exit(1);
 	i = 0;
 	y = 0;
@@ -54,7 +53,7 @@ int		ft_clear2(t_game *game)
 	{
 		if (game->str[i] == 'e')
 		{
-			while(game->str[i] == 'e' || game->str[i] == '\n')
+			while (game->str[i] == 'e' || game->str[i] == '\n')
 				i++;
 		}
 		str[y] = game->str[i];
@@ -72,26 +71,26 @@ char	*optirr(t_game *game, char *str, char *str2)
 	if (game->rbc == 0 && str[1] == 'a')
 	{
 		game->rac += 1;
-		return(str);
+		return (str);
 	}
 	if (game->rbc >= 1 && str[1] == 'a')
 	{
 		ft_clear("rb", str2, 2);
 		game->rbc--;
-		return("rr");
+		return ("rr");
 	}
 	if (game->rac == 0 && str[1] == 'b')
 	{
 		game->rbc += 1;
-		return(str);
+		return (str);
 	}
 	if (game->rac >= 1 && str[1] == 'b')
 	{
 		ft_clear("ra", str2, 2);
 		game->rac--;
-		return("rr");
+		return ("rr");
 	}
-	return(str);
+	return (str);
 }
 
 char	*optirrr(t_game *game, char *str, char *str2)
@@ -105,20 +104,20 @@ char	*optirrr(t_game *game, char *str, char *str2)
 	{
 		ft_clear("rrb", str2, 3);
 		game->rrbc--;
-		return("rrr");
+		return ("rrr");
 	}
 	if (game->rrac == 0 && str[2] == 'b')
 	{
 		game->rrbc += 1;
-		return(str);
+		return (str);
 	}
 	if (game->rrac >= 1 && str[2] == 'b')
 	{
 		ft_clear("rra", str2, 3);
 		game->rrac--;
-		return("rrr");
+		return ("rrr");
 	}
-	return(str);
+	return (str);
 }
 
 char	*gestrr(t_game *game, char *str, char *str2)
@@ -126,13 +125,13 @@ char	*gestrr(t_game *game, char *str, char *str2)
 	if (str[0] == 'r')
 	{
 		if (str[1] == 'r')
-			return(optirrr(game, str, str2));
+			return (optirrr(game, str, str2));
 		else
-			return(optirr(game, str, str2));
+			return (optirr(game, str, str2));
 	}
 	game->rac = 0;
 	game->rrac = 0;
 	game->rbc = 0;
 	game->rrbc = 0;
-	return(str);
+	return (str);
 }
