@@ -27,8 +27,8 @@ int		minormax(t_game *game)
 		imax++;
 	else
 		imax = game->b.len - imax - 1;
-	if (game->b.len == 2 && game->a.len <= 14)
-			return(game->b.max);
+	/* if (game->b.len == 2 && game->a.len <= 14)
+			return(game->b.max); */
 	if (imax < imin)
 		return (game->b.max);
 	return (game->b.min);
@@ -96,7 +96,7 @@ void	aborneur(t_game *game, int bornemin, int bornemax)
 {
 	if (!(bornemin < bornemax))
 		return ;
-	while (check_borne(&game->a, bornemin, bornemax) >= 1)
+	while (check_borne(&game->a, bornemin, bornemax) == 1)
 	{
 		if (game->a.prem >= bornemin && game->a.prem <= bornemax)
 			updatelist(game, "pb");

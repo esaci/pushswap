@@ -109,6 +109,8 @@ void	tech_pquinze(t_game *game)
 
 	bornemin = game->a.min;
 	game->a.fsort = 0;
+	game->b.fsort = 0;
+	game->a.fmax = game->a.min - 1;
 	while (is_good(game) < 1)
 	{
 		bornemax = is_median(&game->a);

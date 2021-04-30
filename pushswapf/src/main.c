@@ -56,6 +56,7 @@ void		game_init2(t_game *game, int argc, char **argv)
 	game->a.len = game->size;
 	game->a.flag = 0;
 	game->b.flag = 1;
+	stack_update(&game->a, 0);
 	if (!(game->b.ptr = malloc(sizeof(int) * game->a.len)))
 	{
 		write(2, "Error\n", 6);
@@ -118,7 +119,6 @@ int			main(int argc, char **argv)
 		free(game.b.ptr);
 		game.rrbc = ft_clear2(&game);
 		write(game.fd, game.str, game.rrbc);
-/* 		write(game.fd, game.str, ft_strlen(game.str)); */
 		free(game.str);
 	}
 	return (0);
