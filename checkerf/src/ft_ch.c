@@ -63,7 +63,7 @@ void	ft_ch(t_game *game, int len, char **action)
 
 	if (!(list = malloc(sizeof(int) * 2)))
 	{
-		write(2, "Erreur malloc\n", 14);
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 	i = 0;
@@ -71,7 +71,7 @@ void	ft_ch(t_game *game, int len, char **action)
 	{
 		if (!checkaction(line, action))
 		{
-			write(2, "Error mauvaise action\n", 22);
+			write(2, "Error\n", 6);
 			free(line);
 			return ;
 		}

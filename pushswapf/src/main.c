@@ -55,7 +55,6 @@ void		game_init2(t_game *game, int argc, char **argv)
 	game->a.len = game->size;
 	game->a.flag = 0;
 	game->b.flag = 1;
-	stack_update(&game->a, 0);
 	if (!(game->b.ptr = malloc(sizeof(int) * game->a.len)))
 	{
 		write(2, "Error\n", 6);
@@ -80,7 +79,7 @@ void		game_init(int argc, char **argv, t_game *game)
 	game->fd = 1;
 	if (!checker2(argc, argv, game, 1))
 	{
-		write(2, "Mauvaises Options\n", 14);
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 	game_init2(game, argc, argv);

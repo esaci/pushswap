@@ -37,7 +37,7 @@ int		push(t_stack *d, t_stack *s)
 	{
 		if (!(nptr = malloc(sizeof(int) * (d->len + 1))))
 		{
-			write(1, "Malloc probleme \n", 17);
+			write(2, "Error\n", 6);
 			exit(1);
 		}
 		i = 0;

@@ -20,12 +20,12 @@ void		game_init(int argc, char **argv, t_game *game, int i)
 	game->fd = 0;
 	if (!checker(argc, argv, game, 1))
 	{
-		write(2, "Mauvaises Options\n", 14);
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 	if (game->fd < 0)
 	{
-		write(2, "Fichier non lu\n", 15);
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 	game->a.ptr = init_ptr(argc, argv, game->count);

@@ -66,7 +66,7 @@ char	**createaction(void)
 
 	if (!(action = malloc(sizeof(char*) * 12)))
 	{
-		write(2, "Erreur malloc\n", 14);
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 	i = 0;
@@ -74,7 +74,7 @@ char	**createaction(void)
 	{
 		if (!(action[i] = malloc(sizeof(char) * 4)))
 		{
-			write(2, "Erreur malloc\n", 14);
+			write(2, "Error\n", 6);
 			exit(1);
 		}
 		i++;
@@ -101,7 +101,7 @@ void	optionv2(t_game *game)
 		printf("\n");
 		i--;
 	}
-	usleep(30000);
+	usleep(300000);
 }
 
 void	optionv(t_game *game, char **action, int *list, int count)
@@ -116,7 +116,10 @@ void	optionv(t_game *game, char **action, int *list, int count)
 		return ;
 	printf("\e[H\e[2J");
 	printf("---%d-----\n", count + 1);
-	printf("\e[1;34m%s\e[0m", action[list[count]]);
+	if (game->flag[0] == 1)
+		printf("\e[1;34m%s\e[0m", action[list[count]]);
+	else
+		printf("%s", action[list[count]]);
 	while (count > 0)
 		printf(" %s", action[list[count--]]);
 	optionv2(game);
