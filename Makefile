@@ -31,7 +31,10 @@ SRC =		$(SRCD)/action.c \
 			$(SRCD)/utils2.c \
 			$(SRCD)/utils.c \
 			$(SRCD)/ft_ch.c \
-			$(SRCDP)/gestrr.c \
+			$(GNL)/get_next_line.c \
+			$(GNL)/get_next_line_utils.c \
+
+SRCP =		$(SRCDP)/gestrr.c \
 			$(SRCDP)/utils5.c \
 			$(SRCDP)/utils4.c \
 			$(SRCDP)/utils3.c \
@@ -43,6 +46,7 @@ SRC =		$(SRCD)/action.c \
 			$(GNL)/get_next_line_utils.c \
 
 OBJ = $(SRC:.c=.o)
+OBJP = $(SRCP:.c=.o)
 
 %.o: %.c
 	$(COMPILE) $(CFLAGS) -c $< -o $@
@@ -58,17 +62,18 @@ $(NAME) : $(OBJ) $(SRCD)/main.c
 		ranlib $(CUBD)
 		$(COMPILE) -o $(NAME) $(SRCD)/main.c  $(CUBD) -I$(INCL)
 
-$(NAMEP) : $(OBJ) $(SRCDP)/main.c
+$(NAMEP) : $(OBJP) $(SRCDP)/main.c
 		rm -rf $(NAMEP)
 		make -C $(LIBFTD)
 		cp $(LIBFTD)$(LIBFT) ./$(CUBDP)
-		ar rc $(CUBDP) $(OBJ)
+		ar rc $(CUBDP) $(OBJP)
 		/bin/rm -f $(LIBFT)
 		ranlib $(CUBDP)
 		$(COMPILE) -o $(NAMEP) $(SRCDP)/main.c  $(CUBDP) -I$(INCLP)
 
 clean:
 	rm -rf $(OBJ)
+	rm -rf $(OBJP)
 	rm -rf objects
 	make clean -C $(LIBFTD)
 
