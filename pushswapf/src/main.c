@@ -78,7 +78,7 @@ void		game_init(int argc, char **argv, t_game *game)
 	}
 	*game->str = '\0';
 	game->fd = 1;
-	if (!checker(argc, argv, game, 1))
+	if (!checker2(argc, argv, game, 1))
 	{
 		write(2, "Mauvaises Options\n", 14);
 		exit(1);
@@ -103,7 +103,7 @@ int			main(int argc, char **argv)
 			return (1);
 		}
 		game.b.len = 0;
-		if (is_good(&game) < 1)
+		if (is_good2(&game) < 1)
 			algo(&game);
 		free(game.a.ptr);
 		free(game.b.ptr);

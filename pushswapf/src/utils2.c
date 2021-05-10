@@ -12,7 +12,7 @@
 
 #include "../bibz/libpush.h"
 
-int			c_int(char *nbr)
+int			c_int2(char *nbr)
 {
 	char	*temp;
 
@@ -26,11 +26,11 @@ int			c_int(char *nbr)
 	return (1);
 }
 
-int			checker(int argc, char **argv, t_game *game, int count1)
+int			checker2(int argc, char **argv, t_game *game, int count1)
 {
 	int		count2;
 
-	while (count1 < argc && argv[count1][0] == '-' && !c_int(argv[count1]))
+	while (count1 < argc && argv[count1][0] == '-' && !c_int2(argv[count1]))
 	{
 		count2 = 1;
 		while (argv[count1][count2])
@@ -63,7 +63,7 @@ int			*readlist(int argc, char **argv, int count)
 	i = 1 + count;
 	while (i < argc)
 	{
-		if (argv[i][0] == 0 || !c_int(argv[i]))
+		if (argv[i][0] == 0 || !c_int2(argv[i]))
 			return (0);
 		i++;
 	}

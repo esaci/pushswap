@@ -26,7 +26,7 @@ int		is_goodsansb(t_game *game)
 	return (1);
 }
 
-int		is_good(t_game *game)
+int		is_good2(t_game *game)
 {
 	size_t		i;
 

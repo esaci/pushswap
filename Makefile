@@ -1,31 +1,86 @@
+NAME = checker
 
-CHECKF = checkerf
+NAMEP = push_swap
 
-CHECKO = checker
+LIBFT = libft.a
 
-PUSHF = pushswapf
+FTPRINTF = libftprintf.a
 
-PUSHO = push_swap
+SRCD = ./checkerf/src
 
-all				:	$(CHECKO) $(PUSHO)
-					@ $(shell cp $(CHECKF)/$(CHECKO) . )
-					@ $(shell cp $(PUSHF)/$(PUSHO) . )
+SRCDP = ./pushswapf/src
 
-$(CHECKO)		:
-					@ $(MAKE) --silent -C $(CHECKF)
+CUBD= ./checkerf/bibz/libcheck.a
 
-$(PUSHO)	:
-					@ $(MAKE) --silent -C $(PUSHF)
+CUBDP= ./pushswapf/bibz/libpush.a
 
-clean			:
-					@ $(MAKE) fclean --silent -C $(CHECKF) > /dev/null 2>&1
-					@ $(MAKE) fclean --silent -C $(PUSHF) > /dev/null 2>&1
+LIBFTD = ./fct/libft/
 
-fclean			:
-					@ rm -rf $(PUSHO) $(CHECKO)
-					@ $(MAKE) fclean --silent -C $(CHECKF) > /dev/null 2>&1
-					@ $(MAKE) fclean --silent -C $(PUSHF) > /dev/null 2>&1
+GNL = ./fct/GNL
 
-re				: 	fclean all
+INCL = ./checkerf/bibz
 
-.PHONY: 		all fclean clean re
+INCLP = ./pushswapf/bibz
+
+COMPILE = gcc
+
+CFLAGS = -Wall -Wextra -Werror
+
+SRC =		$(SRCD)/action.c \
+			$(SRCD)/utils3.c \
+			$(SRCD)/utils2.c \
+			$(SRCD)/utils.c \
+			$(SRCD)/ft_ch.c \
+			$(SRCDP)/gestrr.c \
+			$(SRCDP)/utils5.c \
+			$(SRCDP)/utils4.c \
+			$(SRCDP)/utils3.c \
+			$(SRCDP)/utils2.c \
+			$(SRCDP)/utils.c \
+			$(SRCDP)/median.c \
+			$(SRCDP)/instructions.c \
+			$(GNL)/get_next_line.c \
+			$(GNL)/get_next_line_utils.c \
+
+OBJ = $(SRC:.c=.o)
+
+%.o: %.c
+	$(COMPILE) $(CFLAGS) -c $< -o $@
+
+all: $(NAME) $(NAMEP)
+
+$(NAME) : $(OBJ) $(SRCD)/main.c
+		rm -rf $(NAME)
+		make -C $(LIBFTD)
+		cp $(LIBFTD)$(LIBFT) ./$(CUBD)
+		ar rc $(CUBD) $(OBJ)
+		/bin/rm -f $(LIBFT)
+		ranlib $(CUBD)
+		$(COMPILE) -o $(NAME) $(SRCD)/main.c  $(CUBD) -I$(INCL)
+
+$(NAMEP) : $(OBJ) $(SRCDP)/main.c
+		rm -rf $(NAMEP)
+		make -C $(LIBFTD)
+		cp $(LIBFTD)$(LIBFT) ./$(CUBDP)
+		ar rc $(CUBDP) $(OBJ)
+		/bin/rm -f $(LIBFT)
+		ranlib $(CUBDP)
+		$(COMPILE) -o $(NAMEP) $(SRCDP)/main.c  $(CUBDP) -I$(INCLP)
+
+clean:
+	rm -rf $(OBJ)
+	rm -rf objects
+	make clean -C $(LIBFTD)
+
+fclean: clean
+	rm -rf $(NAME)
+	rm -rf $(NAMEP)
+	rm -rf $(LIBFT)
+	rm -rf $(CUBD)
+	rm -rf ./checkerf/checker.dSYM
+	make fclean -C $(LIBFTD)
+
+re: fclean all
+
+.PHONY: clean fclean all re
+
