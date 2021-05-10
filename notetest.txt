@@ -1,0 +1,30 @@
+vlg () {
+    ./push_swap $1 | ./checker $1
+}
+vlgrc (){
+    ARG=`ruby -e "puts ($1..$2).to_a.shuffle.join(' ')"`
+    echo $ARG
+    ./push_swap $ARG | ./checker -cv $ARG
+    echo $ARG
+}
+vlgr (){
+    ARG=`ruby -e "puts ($1..$2).to_a.shuffle.join(' ')"`
+    echo $ARG
+    ./push_swap $ARG | ./checker -e $ARG
+    echo $ARG
+}
+vlgp (){
+    ARG=`ruby -e "puts ($1..$2).to_a.shuffle.join(' ')"`
+    echo $ARG
+    ./push_swap $ARG
+    echo $ARG
+}
+
+vlgu(){
+    for COUNT in `seq 1 $1`
+    do
+       ARG=`ruby -e  "puts (0..$COUNT).to_a.shuffle.join(' ')"`
+       ./push_swap $ARG | ./checker $ARG
+       echo $ARG
+    done
+}
