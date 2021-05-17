@@ -15,10 +15,16 @@
 int			c_int2(char *nbr)
 {
 	char	*temp;
+	int		fix;
 
+	fix = 0;
+	if (nbr[0] == '-')
+		fix = 1;
 	temp = ft_itoa(ft_atoi(nbr));
 	if (ft_strncmp(temp, nbr, ft_strlen(nbr)))
 	{
+		if (nbr[fix] == '0')
+			return (c_int2(nbr + fix + 1));
 		free(temp);
 		return (0);
 	}

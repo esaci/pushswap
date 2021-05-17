@@ -25,3 +25,11 @@ int		check_borne(t_stack *s, int min, int max)
 	}
 	return (0);
 }
+
+void	finupd(char *str2, int i, int y, t_game *game)
+{
+	str2[i + y++] = '\n';
+	str2[i + y] = '\0';
+	free(game->str);
+	game->str = str2;
+}

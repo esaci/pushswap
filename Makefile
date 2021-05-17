@@ -74,7 +74,6 @@ $(NAMEP) : $(OBJP) $(SRCDP)/main.c
 clean:
 	rm -rf $(OBJ)
 	rm -rf $(OBJP)
-	rm -rf objects
 	make clean -C $(LIBFTD)
 
 fclean: clean
@@ -82,6 +81,7 @@ fclean: clean
 	rm -rf $(NAMEP)
 	rm -rf $(LIBFT)
 	rm -rf $(CUBD)
+	rm -rf $(CUBDP)
 	rm -rf ./checkerf/checker.dSYM
 	make fclean -C $(LIBFTD)
 

@@ -44,7 +44,8 @@ void		updatelist(t_game *game, char *str)
 	if (!(str2 = malloc(sizeof(char) * (i + ft_strlen(str) + 3))))
 		exit(1);
 	i = 0;
-	while (i < ft_strlen(game->str))
+	y = ft_strlen(game->str);
+	while (i < y)
 	{
 		str2[i] = game->str[i];
 		i++;
@@ -57,10 +58,7 @@ void		updatelist(t_game *game, char *str)
 		str2[i + y] = str[y];
 		y++;
 	}
-	str2[i + y++] = '\n';
-	str2[i + y] = '\0';
-	free(game->str);
-	game->str = str2;
+	finupd(str2, i, y, game);
 }
 
 void		tech_trois(t_game *game)

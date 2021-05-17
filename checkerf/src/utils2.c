@@ -15,10 +15,14 @@
 int		c_int(char *nbr)
 {
 	char	*temp;
+	int		fix;
 
+	fix = 0;
 	temp = ft_itoa(ft_atoi(nbr));
 	if (ft_strncmp(temp, nbr, ft_strlen(nbr)))
 	{
+		if (nbr[fix] == '0')
+			return (c_int(nbr + fix + 1));
 		free(temp);
 		return (0);
 	}

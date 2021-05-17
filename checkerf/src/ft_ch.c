@@ -31,7 +31,7 @@ int		checkaction(char *line, char **action)
 	i = 0;
 	while (i < 11)
 	{
-		if (!ft_strncmp(line, action[i], 3))
+		if (!ft_strncmp(line, action[i], ft_strlen(line)))
 			return (1);
 		i++;
 	}

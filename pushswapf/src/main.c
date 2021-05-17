@@ -57,9 +57,9 @@ void		game_init2(t_game *game, int argc, char **argv)
 	game->b.flag = 1;
 	if (!(game->b.ptr = malloc(sizeof(int) * game->a.len)))
 	{
-		write(2, "Error\n", 6);
-		free(game->a.ptr);
-		exit(1);
+		free(game->str);
+		free(game->a);
+		ft_stop("malloc");
 	}
 }
 
@@ -71,16 +71,13 @@ void		game_init(int argc, char **argv, t_game *game)
 	while (i < 4)
 		game->flag[i++] = 0;
 	if (!(game->str = malloc(sizeof(char) * 1)))
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
+		ft_stop("malloc");
 	*game->str = '\0';
 	game->fd = 1;
 	if (!checker2(argc, argv, game, 1))
 	{
-		write(2, "Error\n", 6);
-		exit(1);
+		free(game->str);
+		ft_stop("malloc");
 	}
 	game_init2(game, argc, argv);
 }
@@ -98,8 +95,10 @@ int			main(int argc, char **argv)
 		game_init(argc, argv, &game);
 		if (!game.a.ptr || !doublon_int(&game.a))
 		{
-			write(2, "Error\n", 6);
-			return (1);
+			ft_stop("malloc");
+			free(game.str);
+			free(game.a);
+			free(game.b);
 		}
 		game.b.len = 0;
 		if (is_good2(&game) < 1)

@@ -36,10 +36,7 @@ int		push(t_stack *d, t_stack *s)
 	if (d->flag == 1)
 	{
 		if (!(nptr = malloc(sizeof(int) * (d->len + 1))))
-		{
-			write(2, "Error\n", 6);
-			exit(1);
-		}
+			ft_stop("malloc");
 		i = 0;
 		while (i < d->len)
 		{
