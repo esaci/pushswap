@@ -12,7 +12,7 @@
 
 #include "../bibz/libpush.h"
 
-int		minormax(t_game *game)
+int	minormax(t_game *game)
 {
 	size_t	imin;
 	size_t	imax;
@@ -40,8 +40,8 @@ void	new_min(t_game *g, size_t count)
 		updatelist(g, "ra");
 		return (new_min(g, 0));
 	}
-	if ((is_goodsansb(g) == 1) ||
-		(g->a.prem > g->b.min && g->b.len > 0))
+	if ((is_goodsansb(g) == 1) || (
+			g->a.prem > g->b.min && g->b.len > 0))
 		return ;
 	if (g->a.prem <= g->a.min)
 	{
@@ -78,11 +78,11 @@ void	bborneur(t_game *game, int bornemin, int bornemax)
 {
 	if (!(bornemin < bornemax))
 		return ;
-	while (game->b.len >= 14 &&
-		check_borne(&game->b, bornemin, game->b.max) >= 1)
+	while (game->b.len >= 14 && check_borne
+		(&game->b, bornemin, game->b.max) >= 1)
 	{
-		if ((game->b.prem >= bornemin &&
-			game->b.prem <= game->a.max) || game->b.prem == game->b.min)
+		if ((game->b.prem >= bornemin && game->b.prem <= game->a.max)
+			|| game->b.prem == game->b.min)
 		{
 			updatelist(game, "pa");
 			new_min(game, 0);

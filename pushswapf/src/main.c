@@ -12,7 +12,7 @@
 
 #include "../bibz/libpush.h"
 
-void		algo(t_game *game)
+void	algo(t_game *game)
 {
 	stack_init(&game->a);
 	if (game->a.len == 2)
@@ -25,7 +25,7 @@ void		algo(t_game *game)
 		tech_pquinze(game);
 }
 
-int			doublon_int(t_stack *a, t_game *game)
+int	doublon_int(t_stack *a, t_game *game)
 {
 	int		i;
 	int		j;
@@ -45,25 +45,27 @@ int			doublon_int(t_stack *a, t_game *game)
 	return (1);
 }
 
-void		game_init2(t_game *game, int argc, char **argv)
+void	game_init2(t_game *game, int argc, char **argv)
 {
 	game->a.ptr = readlist(argc, argv, game->count);
 	game->size = argc - game->count - 1;
 	game->a.len = game->size;
 	game->a.flag = 0;
 	game->b.flag = 1;
-	if (!(game->b.ptr = malloc(sizeof(int) * game->a.len)))
+	game->b.ptr = malloc(sizeof(int) * game->a.len);
+	if (!(game->b.ptr))
 		ft_stop3("2", game);
 }
 
-void		game_init(int argc, char **argv, t_game *game)
+void	game_init(int argc, char **argv, t_game *game)
 {
 	int		i;
 
 	i = 0;
 	while (i < 4)
 		game->flag[i++] = 0;
-	if (!(game->str = malloc(sizeof(char) * 1)))
+	game->str = malloc(sizeof(char) * 1);
+	if (!(game->str))
 		ft_stop2("malloc");
 	*game->str = '\0';
 	game->fd = 1;
@@ -75,9 +77,9 @@ void		game_init(int argc, char **argv, t_game *game)
 	game_init2(game, argc, argv);
 }
 
-int			main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_game game;
+	t_game	game;
 
 	game.rac = 0;
 	game.rrac = 0;

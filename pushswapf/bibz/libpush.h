@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	int			*ptr;
 	size_t		len;
@@ -33,7 +33,7 @@ typedef struct	s_stack
 	int			fmax;
 }				t_stack;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	int			flag[4];
 	int			count;

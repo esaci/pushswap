@@ -12,7 +12,7 @@
 
 #include "../bibz/libpush.h"
 
-int		ft_clear(char *str, char *str2, int s)
+int	ft_clear(char *str, char *str2, int s)
 {
 	int		i;
 	int		y;
@@ -38,14 +38,15 @@ int		ft_clear(char *str, char *str2, int s)
 	return (0);
 }
 
-int		ft_clear2(t_game *game)
+int	ft_clear2(t_game *game)
 {
 	size_t		i;
 	size_t		y;
 	char		*str;
 
 	i = ft_strlen(game->str) - 1;
-	if (!(str = malloc(sizeof(char) * (i + 2))))
+	str = malloc(sizeof(char) * (i + 2));
+	if (!(str))
 		ft_stop3("4", game);
 	i = 0;
 	y = 0;

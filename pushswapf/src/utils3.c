@@ -12,7 +12,7 @@
 
 #include "../bibz/libpush.h"
 
-int		is_goodsansb(t_game *game)
+int	is_goodsansb(t_game *game)
 {
 	int		i;
 
@@ -26,7 +26,7 @@ int		is_goodsansb(t_game *game)
 	return (1);
 }
 
-int		is_good2(t_game *game)
+int	is_good2(t_game *game)
 {
 	size_t		i;
 
@@ -52,7 +52,7 @@ size_t	check_value(t_stack *stack, int value)
 	return (i);
 }
 
-int		value_premiera(int value, t_game *game)
+int	value_premiera(int value, t_game *game)
 {
 	size_t	ivalue;
 
@@ -72,7 +72,7 @@ int		value_premiera(int value, t_game *game)
 	return (1);
 }
 
-int		value_premierb(int value, t_game *game)
+int	value_premierb(int value, t_game *game)
 {
 	size_t	ivalue;
 

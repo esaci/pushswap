@@ -12,7 +12,7 @@
 
 #include "../bibz/libpush.h"
 
-void		stack_update(t_stack *s, int i)
+void	stack_update(t_stack *s, int i)
 {
 	size_t	count;
 
@@ -34,14 +34,15 @@ void		stack_update(t_stack *s, int i)
 	}
 }
 
-void		updatelist(t_game *game, char *str)
+void	updatelist(t_game *game, char *str)
 {
 	char		*str2;
 	size_t		i;
 	size_t		y;
 
 	i = ft_strlen(game->str);
-	if (!(str2 = malloc(sizeof(char) * (i + ft_strlen(str) + 3))))
+	str2 = malloc(sizeof(char) * (i + ft_strlen(str) + 3));
+	if (!(str2))
 		ft_stop3("4", game);
 	i = 0;
 	y = ft_strlen(game->str);
@@ -61,7 +62,7 @@ void		updatelist(t_game *game, char *str)
 	finupd(str2, i, y, game);
 }
 
-void		tech_trois(t_game *game)
+void	tech_trois(t_game *game)
 {
 	if (game->a.ptr[2] > game->a.ptr[0])
 	{
@@ -85,7 +86,7 @@ void		tech_trois(t_game *game)
 	}
 }
 
-void		tech_mquinze(t_game *game)
+void	tech_mquinze(t_game *game)
 {
 	while (game->a.len > 3)
 	{
@@ -98,7 +99,7 @@ void		tech_mquinze(t_game *game)
 		updatelist(game, "pa");
 }
 
-void		tech_pquinze(t_game *game)
+void	tech_pquinze(t_game *game)
 {
 	int		bornemax;
 	int		bornemin;

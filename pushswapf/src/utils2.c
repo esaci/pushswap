@@ -12,7 +12,7 @@
 
 #include "../bibz/libpush.h"
 
-int			c_int2(char *nbr)
+int	c_int2(char *nbr)
 {
 	char	*temp;
 	int		fix;
@@ -32,7 +32,7 @@ int			c_int2(char *nbr)
 	return (1);
 }
 
-int			checker2(int argc, char **argv, t_game *game, int count1)
+int	checker2(int argc, char **argv, t_game *game, int count1)
 {
 	int		count2;
 
@@ -60,7 +60,7 @@ int			checker2(int argc, char **argv, t_game *game, int count1)
 	return (1);
 }
 
-int			*readlist(int argc, char **argv, int count)
+int	*readlist(int argc, char **argv, int count)
 {
 	int		*ptr;
 	int		i;
@@ -75,7 +75,8 @@ int			*readlist(int argc, char **argv, int count)
 	}
 	if (argc - count < 2)
 		return (0);
-	if (!(ptr = malloc(sizeof(int) * argc - 1 - count)))
+	ptr = malloc(sizeof(int) * argc - 1 - count);
+	if (!(ptr))
 		return (0);
 	j = 0;
 	i--;
@@ -84,7 +85,7 @@ int			*readlist(int argc, char **argv, int count)
 	return (ptr);
 }
 
-void		stack_init(t_stack *s)
+void	stack_init(t_stack *s)
 {
 	size_t	i;
 

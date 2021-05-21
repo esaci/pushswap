@@ -12,9 +12,9 @@
 
 #include "../bibz/libpush.h"
 
-int		swap(t_stack *stack)
+int	swap(t_stack *stack)
 {
-	int temp;
+	int	temp;
 
 	if (stack->len <= 1)
 		return (0);
@@ -26,7 +26,7 @@ int		swap(t_stack *stack)
 	return (0);
 }
 
-int		push(t_stack *d, t_stack *s)
+int	push(t_stack *d, t_stack *s)
 {
 	int			*nptr;
 	size_t		i;
@@ -35,7 +35,8 @@ int		push(t_stack *d, t_stack *s)
 		return (0);
 	if (d->flag == 1)
 	{
-		if (!(nptr = malloc(sizeof(int) * (d->len + 1))))
+		nptr = malloc(sizeof(int) * (d->len + 1));
+		if (!(nptr))
 			ft_stop2("malloc");
 		i = 0;
 		while (i < d->len)
@@ -52,7 +53,7 @@ int		push(t_stack *d, t_stack *s)
 	return (0);
 }
 
-int		rotate(t_stack *s)
+int	rotate(t_stack *s)
 {
 	int			temp;
 	size_t		i;
@@ -71,7 +72,7 @@ int		rotate(t_stack *s)
 	return (0);
 }
 
-int		reverserotate(t_stack *stack)
+int	reverserotate(t_stack *stack)
 {
 	int			temp;
 	size_t		i;
@@ -90,7 +91,7 @@ int		reverserotate(t_stack *stack)
 	return (0);
 }
 
-int		ft_lecteur(char *inst, t_game *game)
+int	ft_lecteur(char *inst, t_game *game)
 {
 	if (!ft_strncmp(inst, "sa", 2))
 		return (swap(&game->a));
