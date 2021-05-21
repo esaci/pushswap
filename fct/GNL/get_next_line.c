@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int	ft_test(int fd, char **line, char *countb, char **countu)
+int	ft_test(int fd, char **line, char *countb, char *countu)
 {
 	if (line == 0 || BUFFER_SIZE < 1 || fd >= FOPEN_MAX || fd < 0)
 		return (- 'E');
@@ -21,9 +21,9 @@ int	ft_test(int fd, char **line, char *countb, char **countu)
 		return (- 'E');
 	countb[0] = 0;
 	*line[0] = 0;
-	if (ft_flag(countu[fd]) == 1)
+	if (ft_flag(countu) == 1)
 	{
-		*line = ft_joining(*line, countu[fd]);
+		*line = ft_joining(*line, countu);
 		if (!(*line))
 			return (- 'E');
 	}
@@ -103,7 +103,7 @@ int	get_next_line(int fd, char **line)
 	int				count2;
 
 	ct = 0;
-	if (ft_test(fd, line, countb, countu) == - 'E')
+	if (ft_test(fd, line, countb, countu[fd]) == - 'E')
 		return (-1);
 	ct = read(fd, countb, BUFFER_SIZE);
 	while ((ft_testli(*line) == - 'E' && ct > 0))
@@ -116,5 +116,5 @@ int	get_next_line(int fd, char **line)
 	}
 	count2 = ft_testli(*line);
 	ft_fin(*line, countu[fd]);
-	return (get_next_line2(ct, count2, countu));
+	return (get_next_line2(ct, count2, countu[fd]));
 }
