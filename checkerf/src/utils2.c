@@ -12,7 +12,7 @@
 
 #include "../bibz/libcheck.h"
 
-int		c_int(char *nbr)
+int	c_int(char *nbr)
 {
 	char	*temp;
 	int		fix;
@@ -30,7 +30,7 @@ int		c_int(char *nbr)
 	return (1);
 }
 
-int		checker(int argc, char **argv, t_game *game, int count2)
+int	checker(int argc, char **argv, t_game *game, int count2)
 {
 	game->count = 1;
 	while (game->count < argc && argv[game->count][0] == '-'
@@ -58,7 +58,7 @@ int		checker(int argc, char **argv, t_game *game, int count2)
 	return (1);
 }
 
-int		*init_ptr(int argc, char **argv, int count)
+int	*init_ptr(int argc, char **argv, int count)
 {
 	int		*ptr;
 	int		i;
@@ -73,7 +73,8 @@ int		*init_ptr(int argc, char **argv, int count)
 	}
 	if (argc - count < 2)
 		return (0);
-	if (!(ptr = malloc(sizeof(int) * argc - 1 - count)))
+	ptr = malloc(sizeof(int) * argc - 1 - count);
+	if (!(ptr))
 		return (0);
 	j = 0;
 	i--;

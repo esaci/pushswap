@@ -12,7 +12,7 @@
 
 #include "../bibz/libcheck.h"
 
-int		is_good(t_game *game)
+int	is_good(t_game *game)
 {
 	size_t		i;
 
@@ -30,13 +30,14 @@ int		is_good(t_game *game)
 	return (1);
 }
 
-int		*listeur(int *list, int len, char *line, char **action)
+int	*listeur(int *list, int len, char *line, char **action)
 {
 	int		*list2;
 	int		y;
 	int		i;
 
-	if (!(list2 = malloc(sizeof(int) * (len + 2))))
+	list2 = malloc(sizeof(int) * (len + 2));
+	if (!(list))
 		ft_stop5();
 	i = 0;
 	while (i < len)
@@ -57,7 +58,7 @@ int		*listeur(int *list, int len, char *line, char **action)
 	return (list2);
 }
 
-void	ft_stop5()
+void	ft_stop5(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);

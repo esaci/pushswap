@@ -64,12 +64,14 @@ char	**createaction(void)
 	int		i;
 	char	**action;
 
-	if (!(action = malloc(sizeof(char*) * 12)))
+	action = malloc(sizeof(char *) * 12);
+	if (!(action))
 		ft_stop5();
 	i = 0;
 	while (i < 11)
 	{
-		if (!(action[i] = malloc(sizeof(char) * 4)))
+		action[i] = malloc(sizeof(char) * 4);
+		if (!(action[i]))
 			ft_stop5();
 		i++;
 	}

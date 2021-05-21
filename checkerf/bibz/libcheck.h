@@ -25,13 +25,13 @@
 # define NB_MOVES 11
 # define DELAY 100000
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	int			*ptr;
 	size_t		len;
 }				t_stack;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	int			flag[6];
 	int			count;
@@ -51,6 +51,6 @@ int				is_good(t_game *game);
 int				*listeur(int *list, int len, char *line, char **action);
 char			**createaction(void);
 void			optionv(t_game *game, char **action, int *list, int count);
-void			ft_stop5();
+void			ft_stop5(void);
 void			ft_stop4(char *str, t_game *game);
 #endif

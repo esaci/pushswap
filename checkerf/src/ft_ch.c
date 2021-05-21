@@ -24,7 +24,7 @@ void	freeaction(char **action, char *line, int *list)
 	free(line);
 }
 
-int		checkaction(char *line, char **action)
+int	checkaction(char *line, char **action)
 {
 	int		i;
 
@@ -61,16 +61,17 @@ void	ft_ch(t_game *game, int len, char **action)
 	int			*list;
 	int			i;
 
-	if (!(list = malloc(sizeof(int) * 2)))
+	list = malloc(sizeof(int) * 2);
+	if (!(list))
 		ft_stop4("3", game);
 	i = 0;
 	while (get_next_line(game->fd, &line))
 	{
 		if (!checkaction(line, action))
 		{
-			write(2, "Error\n", 6);
+			freeaction(action, line, list);
 			free(line);
-			return ;
+			ft_stop4("3", game);
 		}
 		i++;
 		list = listeur(list, len, line, action);

@@ -12,7 +12,7 @@
 
 #include "../bibz/libcheck.h"
 
-void		game_init(int argc, char **argv, t_game *game, int i)
+void	game_init(int argc, char **argv, t_game *game, int i)
 {
 	while (i < 6)
 		game->flag[i++] = 0;
@@ -25,11 +25,12 @@ void		game_init(int argc, char **argv, t_game *game, int i)
 	game->a.ptr = init_ptr(argc, argv, game->count);
 	game->size = argc - game->count - 1;
 	game->a.len = game->size;
-	if (!(game->b.ptr = malloc(sizeof(int) * game->a.len)))
+	game->b.ptr = malloc(sizeof(int) * game->a.len);
+	if (!(game->b.ptr))
 		ft_stop4("2", game);
 }
 
-int			doublon_int(t_stack *a)
+int	doublon_int(t_stack *a)
 {
 	int		i;
 	int		j;
@@ -52,9 +53,9 @@ int			doublon_int(t_stack *a)
 	return (1);
 }
 
-int			main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_game game;
+	t_game	game;
 
 	if (argc >= 2)
 	{
