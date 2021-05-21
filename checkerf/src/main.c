@@ -43,7 +43,6 @@ int	doublon_int(t_stack *a)
 		{
 			if (a->ptr[i] == a->ptr[j])
 			{
-				free(a->ptr);
 				return (0);
 			}
 			j++;

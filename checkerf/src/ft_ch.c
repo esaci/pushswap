@@ -70,7 +70,6 @@ void	ft_ch(t_game *game, int len, char **action)
 		if (!checkaction(line, action))
 		{
 			freeaction(action, line, list);
-			free(line);
 			ft_stop4("3", game);
 		}
 		i++;
