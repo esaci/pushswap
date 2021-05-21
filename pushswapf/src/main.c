@@ -37,7 +37,7 @@ int	doublon_int(t_stack *a, t_game *game)
 		while (j < (int)a->len)
 		{
 			if (a->ptr[i] == a->ptr[j])
-				ft_stop3("2", game);
+				ft_stop3("3", game);
 			j++;
 		}
 		i++;
