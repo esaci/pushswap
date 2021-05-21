@@ -24,7 +24,10 @@ int	c_int2(char *nbr)
 	if (ft_strncmp(temp, nbr, ft_strlen(nbr)))
 	{
 		if (nbr[fix] == '0')
+		{
+			free(temp);
 			return (c_int2(nbr + fix + 1));
+		}
 		free(temp);
 		return (0);
 	}
