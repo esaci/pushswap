@@ -12,7 +12,20 @@
 
 #include "get_next_line.h"
 
-int	ft_flag(char countu[BUFFER_SIZE + 2])
+size_t	ft_strlen(const char *s)
+{
+	int count;
+
+	count = 0;
+	while (*s != '\0')
+	{
+		count++;
+		s++;
+	}
+	return (sizeof(char) * count);
+}
+
+int		ft_flag(char countu[BUFFER_SIZE + 2])
 {
 	if (countu[BUFFER_SIZE + 1] != 'E')
 	{
@@ -22,13 +35,4 @@ int	ft_flag(char countu[BUFFER_SIZE + 2])
 	else
 		return (1);
 	return (0);
-}
-
-int	get_next_line2(int ct, int count2, char *countu)
-{
-	if (ct == -1 || count2 == - 'E')
-		countu[BUFFER_SIZE + 1] = 0;
-	if (ct == -1)
-		return (-1);
-	return (count2 != - 'E');
 }
