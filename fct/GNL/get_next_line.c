@@ -105,7 +105,7 @@ int	get_next_line(int fd, char **line)
 	ct = 0;
 	if (ft_test(fd, line, countb, countu[fd]) == - 'E')
 		return (-1);
-	while ((ft_testli(*line) == -'E'))
+	while ((ft_testli(*line) == - 'E'))
 	{
 		ct = read(fd, countb, BUFFER_SIZE);
 		if (ct <= 0)
