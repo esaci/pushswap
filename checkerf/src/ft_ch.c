@@ -62,10 +62,7 @@ void	ft_ch(t_game *game, int len, char **action)
 	int			i;
 
 	if (!(list = malloc(sizeof(int) * 2)))
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
+		ft_stop4("3", game);
 	i = 0;
 	while (get_next_line(game->fd, &line))
 	{

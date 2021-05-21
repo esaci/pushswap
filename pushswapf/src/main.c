@@ -25,7 +25,7 @@ void		algo(t_game *game)
 		tech_pquinze(game);
 }
 
-int			doublon_int(t_stack *a)
+int			doublon_int(t_stack *a, t_game *game)
 {
 	int		i;
 	int		j;
@@ -37,10 +37,7 @@ int			doublon_int(t_stack *a)
 		while (j < (int)a->len)
 		{
 			if (a->ptr[i] == a->ptr[j])
-			{
-				free(a->ptr);
-				return (0);
-			}
+				ft_stop3("2", game);
 			j++;
 		}
 		i++;
@@ -56,11 +53,7 @@ void		game_init2(t_game *game, int argc, char **argv)
 	game->a.flag = 0;
 	game->b.flag = 1;
 	if (!(game->b.ptr = malloc(sizeof(int) * game->a.len)))
-	{
-		free(game->str);
-		free(game->a);
-		ft_stop("malloc");
-	}
+		ft_stop3("2", game);
 }
 
 void		game_init(int argc, char **argv, t_game *game)
@@ -71,13 +64,13 @@ void		game_init(int argc, char **argv, t_game *game)
 	while (i < 4)
 		game->flag[i++] = 0;
 	if (!(game->str = malloc(sizeof(char) * 1)))
-		ft_stop("malloc");
+		ft_stop2("malloc");
 	*game->str = '\0';
 	game->fd = 1;
 	if (!checker2(argc, argv, game, 1))
 	{
 		free(game->str);
-		ft_stop("malloc");
+		ft_stop3("1", game);
 	}
 	game_init2(game, argc, argv);
 }
@@ -93,13 +86,8 @@ int			main(int argc, char **argv)
 	if (argc >= 2)
 	{
 		game_init(argc, argv, &game);
-		if (!game.a.ptr || !doublon_int(&game.a))
-		{
-			ft_stop("malloc");
-			free(game.str);
-			free(game.a);
-			free(game.b);
-		}
+		if (!game.a.ptr || !doublon_int(&game.a, &game))
+			ft_stop3("full", &game);
 		game.b.len = 0;
 		if (is_good2(&game) < 1)
 			algo(&game);

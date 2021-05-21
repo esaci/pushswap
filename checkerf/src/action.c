@@ -65,18 +65,12 @@ char	**createaction(void)
 	char	**action;
 
 	if (!(action = malloc(sizeof(char*) * 12)))
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
+		ft_stop5();
 	i = 0;
 	while (i < 11)
 	{
 		if (!(action[i] = malloc(sizeof(char) * 4)))
-		{
-			write(2, "Error\n", 6);
-			exit(1);
-		}
+			ft_stop5();
 		i++;
 	}
 	action = createaction2(action);

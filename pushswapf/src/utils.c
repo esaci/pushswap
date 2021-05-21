@@ -42,7 +42,7 @@ void		updatelist(t_game *game, char *str)
 
 	i = ft_strlen(game->str);
 	if (!(str2 = malloc(sizeof(char) * (i + ft_strlen(str) + 3))))
-		exit(1);
+		ft_stop3("4", game);
 	i = 0;
 	y = ft_strlen(game->str);
 	while (i < y)

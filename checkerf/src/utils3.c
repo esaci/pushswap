@@ -37,7 +37,7 @@ int		*listeur(int *list, int len, char *line, char **action)
 	int		i;
 
 	if (!(list2 = malloc(sizeof(int) * (len + 2))))
-		exit(1);
+		ft_stop5();
 	i = 0;
 	while (i < len)
 	{
@@ -55,4 +55,22 @@ int		*listeur(int *list, int len, char *line, char **action)
 	list2[++i] = 0;
 	free(list);
 	return (list2);
+}
+
+void	ft_stop5()
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
+void	ft_stop4(char *str, t_game *game)
+{
+	free(game->str);
+	if (str[0] == '1')
+		ft_stop5();
+	free(game->a.ptr);
+	if (str[0] == '2')
+		ft_stop5();
+	free(game->b.ptr);
+	ft_stop5();
 }

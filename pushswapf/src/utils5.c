@@ -33,3 +33,23 @@ void	finupd(char *str2, int i, int y, t_game *game)
 	free(game->str);
 	game->str = str2;
 }
+
+void	ft_stop2(char *str)
+{
+	if (str[0] == 'e')
+		return ;
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
+void	ft_stop3(char *str, t_game *game)
+{
+	free(game->str);
+	if (str[0] == '1')
+		ft_stop2("malloc");
+	free(game->a.ptr);
+	if (str[0] == '2')
+		ft_stop2("malloc");
+	free(game->b.ptr);
+	ft_stop2("malloc");
+}

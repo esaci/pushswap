@@ -69,4 +69,6 @@ void			tech_pquinze(t_game *game);
 char			*gestrr(t_game *game, char *str, char *str2);
 int				ft_clear2(t_game *game);
 void			finupd(char *str2, int i, int y, t_game *game);
+void			ft_stop2(char *str);
+void			ft_stop3(char *str, t_game *game);
 #endif

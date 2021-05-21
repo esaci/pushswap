@@ -19,24 +19,14 @@ void		game_init(int argc, char **argv, t_game *game, int i)
 	game->str = NULL;
 	game->fd = 0;
 	if (!checker(argc, argv, game, 1))
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
+		ft_stop4("1", game);
 	if (game->fd < 0)
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
+		ft_stop4("1", game);
 	game->a.ptr = init_ptr(argc, argv, game->count);
 	game->size = argc - game->count - 1;
 	game->a.len = game->size;
 	if (!(game->b.ptr = malloc(sizeof(int) * game->a.len)))
-	{
-		write(2, "Error\n", 6);
-		free(game->a.ptr);
-		exit(1);
-	}
+		ft_stop4("2", game);
 }
 
 int			doublon_int(t_stack *a)
@@ -70,10 +60,7 @@ int			main(int argc, char **argv)
 	{
 		game_init(argc, argv, &game, 0);
 		if (!game.a.ptr || !doublon_int(&game.a))
-		{
-			write(2, "Error\n", 6);
-			return (1);
-		}
+			ft_stop4("3", &game);
 		game.b.len = 0;
 		ft_ch(&game, 0, createaction());
 		free(game.a.ptr);
