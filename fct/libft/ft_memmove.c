@@ -15,19 +15,22 @@
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t				count;
-	unsigned	char	dep[len];
+	unsigned char		*dep;
 
 	count = 0;
+	dep = malloc(sizeof(unsigned char *) * len);
+	if (!(dep))
+		return (0);
 	while (count < len)
 	{
-		dep[count] = *(unsigned char*)src;
+		dep[count] = *(unsigned char *)src;
 		count++;
 		src++;
 	}
 	count = 0;
 	while (count < len)
 	{
-		*(unsigned char*)dst = dep[count];
+		*(unsigned char *)dst = dep[count];
 		dst++;
 		count++;
 	}

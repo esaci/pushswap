@@ -14,8 +14,8 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int count;
-	int count2;
+	int	count;
+	int	count2;
 
 	count = 0;
 	count2 = 0;
@@ -26,8 +26,8 @@ char	*ft_strrchr(const char *s, int c)
 		count++;
 	}
 	if (count2 != 0 || (char)s[count2] == c)
-		return ((char*)s + count2);
+		return ((char *)s + count2);
 	if (c == 0 && (char)s[count] == '\0')
-		return ((char*)s + count);
+		return ((char *)s + count);
 	return (NULL);
 }

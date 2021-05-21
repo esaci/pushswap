@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-int		ft_word(char const *s, char c)
+int	ft_word(char const *s, char c)
 {
-	int countw;
-	int counti;
+	int	countw;
+	int	counti;
 
 	countw = 0;
 	counti = 0;
@@ -31,9 +31,9 @@ int		ft_word(char const *s, char c)
 	return (countw);
 }
 
-int		ft_len(char const *s, char c, int start)
+int	ft_len(char const *s, char c, int start)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (s[start] == c)
@@ -45,9 +45,10 @@ int		ft_len(char const *s, char c, int start)
 
 char	**ft_vide(char const *s)
 {
-	char **ptr;
+	char	**ptr;
 
-	if (!(ptr = malloc(sizeof(char*) * (2))))
+	ptr = malloc(sizeof(char *) * (2));
+	if (!(ptr))
 		return (NULL);
 	ptr[0] = ft_strdup(s);
 	ptr[1] = 0;
@@ -63,7 +64,8 @@ char	**ft_split(char const *s, char c)
 	count3 = 0;
 	while (s[count3] == c)
 		count3++;
-	if (!(ptr = malloc(sizeof(char*) * (ft_word(s, c) + 1))))
+	ptr = malloc(sizeof(char *) * (ft_word(s, c) + 1));
+	if (!(ptr))
 		return (NULL);
 	count = 0;
 	while (count < ft_word(s, c))

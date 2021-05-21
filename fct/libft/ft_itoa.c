@@ -14,8 +14,8 @@
 
 char	*ft_calcul(char *dst, long int val)
 {
-	long int		val2;
-	size_t			counti;
+	long int	val2;
+	size_t		counti;
 
 	counti = 0;
 	if (val == -2147483648)
@@ -42,11 +42,12 @@ char	*ft_calcul(char *dst, long int val)
 
 char	*ft_itoa(int n)
 {
-	char		*dst;
-	size_t		count;
-	char		swotch;
+	char	*dst;
+	size_t	count;
+	char	swotch;
 
-	if (!(dst = malloc(sizeof(char) * 12)))
+	dst = malloc(sizeof(char) * 12);
+	if (!(dst))
 		return (NULL);
 	dst = ft_calcul(dst, (long int)n);
 	count = ft_strlen(dst) - 1;

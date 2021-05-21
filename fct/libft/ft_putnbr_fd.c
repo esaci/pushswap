@@ -24,7 +24,7 @@ void	ft_boucle(long int count, int fd)
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long int count;
+	long int	count;
 
 	count = n;
 	if (count == -2147483648)

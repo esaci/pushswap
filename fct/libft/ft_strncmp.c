@@ -14,7 +14,7 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while ((size_t)count < n)

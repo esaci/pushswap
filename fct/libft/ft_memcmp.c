@@ -21,9 +21,9 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	count = 0;
 	while (count < n)
 	{
-		if (!(*(unsigned char*)s1 == *(unsigned char*)s2))
+		if (!(*(unsigned char *)s1 == *(unsigned char *)s2))
 		{
-			res = *(unsigned char*)s1 - *(unsigned char*)s2;
+			res = *(unsigned char *)s1 - *(unsigned char *)s2;
 			return (res);
 		}
 		s1++;

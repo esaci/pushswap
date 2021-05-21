@@ -14,9 +14,9 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int counts1;
-	int counts2;
-	char*ptr;
+	int		counts1;
+	int		counts2;
+	char	*ptr;
 
 	counts1 = 1;
 	counts2 = 1;
@@ -32,7 +32,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		ptr = ft_substr(s2, 0, counts2);
 	if (!s1 || !s2)
 		return (ptr);
-	if (!(ptr = malloc(sizeof(char) * (counts1 + counts2 + 1))))
+	ptr = malloc(sizeof(char) * (counts1 + counts2 + 1));
+	if (!(ptr))
 		return (NULL);
 	ft_strlcpy(ptr, s1, counts1 + counts2 + 1);
 	ft_strlcat(ptr, s2, counts2 + counts1 + 1);

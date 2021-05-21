@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-int		ft_countreverse(char const *s1, char const *set, int count)
+int	ft_countreverse(char const *s1, char const *set, int count)
 {
-	int count2;
-	int count3;
+	int	count2;
+	int	count3;
 
 	count2 = (unsigned int)ft_strlen(s1);
 	count3 = 0;
