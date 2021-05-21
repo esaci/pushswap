@@ -26,10 +26,11 @@
 # include "../libft/libft.h"
 
 int		ft_flag(char countu[BUFFER_SIZE + 2]);
-int		ft_test(int fd, char **line, char *countb);
+int		ft_test(int fd, char **line, char *countb, char *countu);
 int		ft_testli(char *ptr);
 char	*ft_joining(char *line, char *countb);
 void	ft_fin(char *line, char *countu);
 int		get_next_line(int fd, char **line);
 size_t	ft_strlen(const char *s);
+int		get_next_line2(int ct, int count2, char *countu);
 #endif
