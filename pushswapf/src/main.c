@@ -101,6 +101,8 @@ int	main(int argc, char **argv)
 		game.rrbc = ft_clear2(&game);
 		write(game.fd, game.str, game.rrbc);
 		free(game.str);
+		if (argc != game.argc)
+			freechar(argv2);
 	}
 	return (0);
 }

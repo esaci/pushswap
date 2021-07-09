@@ -12,14 +12,17 @@
 
 #include "../bibz/libpush.h"
 
-int	strlendouble(char **str)
+void 			freechar(char **argv2)
 {
 	int	count;
 
 	count = 0;
-	while (str[count])
+	while (argv2[count])
+	{
+		free(argv2[count]);
 		count++;
-	return (count);
+	}
+	free(argv2);
 }
 
 char	**malloqueur(char **argv)
@@ -51,7 +54,7 @@ char	**malloqueur(char **argv)
 	return (argv2);
 }
 
-char	**replace(char **argv, t_game *game, int count3)
+char	**replace(char **argv, t_game *game)
 {
 	int		count;
 	int		count2;
@@ -66,7 +69,6 @@ char	**replace(char **argv, t_game *game, int count3)
 	while (argv[count])
 	{
 		argv3 = ft_split(argv[count], ' ');
-		count3 = strlendouble(argv3);
 		count4 = 0;
 		while (argv3[count4])
 		{
@@ -74,6 +76,7 @@ char	**replace(char **argv, t_game *game, int count3)
 			count2++;
 			count4++;
 		}
+		free(argv3);
 		count++;
 	}
 	return (argv2);
@@ -104,7 +107,7 @@ char	**game_char(int argc, char **argv, t_game *game)
 		{
 			if (argv[count][count2] == ' ')
 			{
-				return (ft_show(replace(argv, game, count2), game));
+				return (ft_show(replace(argv, game), game));
 			}
 			count2++;
 		}
