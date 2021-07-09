@@ -47,6 +47,7 @@ typedef struct s_game
 	int			rbc;
 	int			rrac;
 	int			rrbc;
+	int			argc;
 }				t_game;
 
 void			stack_init(t_stack *s);
@@ -71,4 +72,5 @@ int				ft_clear2(t_game *game);
 void			finupd(char *str2, int i, int y, t_game *game);
 void			ft_stop2(char *str);
 void			ft_stop3(char *str, t_game *game);
+char			**game_char(int argc, char **argv, t_game *game);
 #endif

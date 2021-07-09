@@ -41,6 +41,7 @@ SRCP =		$(SRCDP)/gestrr.c \
 			$(SRCDP)/utils2.c \
 			$(SRCDP)/utils.c \
 			$(SRCDP)/median.c \
+			$(SRCDP)/game_char.c \
 			$(SRCDP)/instructions.c \
 			$(GNL)/get_next_line.c \
 			$(GNL)/get_next_line_utils.c \

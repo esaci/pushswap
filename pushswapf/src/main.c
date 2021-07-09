@@ -45,10 +45,10 @@ int	doublon_int(t_stack *a, t_game *game)
 	return (1);
 }
 
-void	game_init2(t_game *game, int argc, char **argv)
+void	game_init2(t_game *game, char **argv)
 {
-	game->a.ptr = readlist(argc, argv, game->count);
-	game->size = argc - game->count - 1;
+	game->a.ptr = readlist(game->argc, argv, game->count);
+	game->size = game->argc - game->count - 1;
 	game->a.len = game->size;
 	game->a.flag = 0;
 	game->b.flag = 1;
@@ -57,7 +57,7 @@ void	game_init2(t_game *game, int argc, char **argv)
 		ft_stop3("2", game);
 }
 
-void	game_init(int argc, char **argv, t_game *game)
+void	game_init(char **argv, t_game *game)
 {
 	int		i;
 
@@ -69,25 +69,28 @@ void	game_init(int argc, char **argv, t_game *game)
 		ft_stop2("malloc");
 	*game->str = '\0';
 	game->fd = 1;
-	if (!checker2(argc, argv, game, 1))
+	if (!checker2(game->argc, argv, game, 1))
 	{
 		free(game->str);
 		ft_stop3("1", game);
 	}
-	game_init2(game, argc, argv);
+	game_init2(game, argv);
 }
 
 int	main(int argc, char **argv)
 {
 	t_game	game;
+	char	**argv2;
 
 	game.rac = 0;
 	game.rrac = 0;
 	game.rbc = 0;
 	game.rrbc = 0;
-	if (argc >= 2)
+	game.argc = argc;
+	if (game.argc >= 2)
 	{
-		game_init(argc, argv, &game);
+		argv2 = game_char(argc, argv, &game);
+		game_init(argv2, &game);
 		if (!game.a.ptr || !doublon_int(&game.a, &game))
 			ft_stop3("full", &game);
 		game.b.len = 0;
