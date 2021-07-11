@@ -44,6 +44,8 @@ void	ft_stop2(char *str)
 
 void	ft_stop3(char *str, t_game *game)
 {
+	if (game->flag[4])
+		freechar(game->argv2);
 	free(game->str);
 	if (str[0] == '1')
 		ft_stop2("malloc");

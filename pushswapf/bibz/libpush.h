@@ -35,7 +35,7 @@ typedef struct s_stack
 
 typedef struct s_game
 {
-	int			flag[4];
+	int			flag[5];
 	int			count;
 	int			fd;
 	char		*list;
@@ -48,6 +48,7 @@ typedef struct s_game
 	int			rrac;
 	int			rrbc;
 	int			argc;
+	char		**argv2;
 }				t_game;
 
 void			stack_init(t_stack *s);

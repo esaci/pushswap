@@ -31,6 +31,7 @@ SRC =		$(SRCD)/action.c \
 			$(SRCD)/utils2.c \
 			$(SRCD)/utils.c \
 			$(SRCD)/ft_ch.c \
+			$(SRCD)/game_char.c \
 			$(GNL)/get_next_line.c \
 			$(GNL)/get_next_line_utils.c \
 

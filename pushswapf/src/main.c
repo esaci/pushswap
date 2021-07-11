@@ -84,13 +84,12 @@ void	game_init(char **argv, t_game *game)
 int	main(int argc, char **argv)
 {
 	t_game	game;
-	char	**argv2;
 
 	game.argc = argc;
 	if (game.argc >= 2)
 	{
-		argv2 = game_char(argc, argv, &game);
-		game_init(argv2, &game);
+		game.argv2 = game_char(argc, argv, &game);
+		game_init(game.argv2, &game);
 		if (!game.a.ptr || !doublon_int(&game.a, &game))
 			ft_stop3("full", &game);
 		game.b.len = 0;
@@ -101,8 +100,8 @@ int	main(int argc, char **argv)
 		game.rrbc = ft_clear2(&game);
 		write(game.fd, game.str, game.rrbc);
 		free(game.str);
-		if (argc != game.argc)
-			freechar(argv2);
+		if (game.flag[4])
+			freechar(game.argv2);
 	}
 	return (0);
 }

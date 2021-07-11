@@ -66,6 +66,8 @@ void	ft_stop5(void)
 
 void	ft_stop4(char *str, t_game *game)
 {
+	if (game->flag[6])
+		freechar(game->argv2);
 	free(game->str);
 	if (str[0] == '1')
 		ft_stop5();

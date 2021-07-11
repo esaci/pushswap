@@ -33,13 +33,15 @@ typedef struct s_stack
 
 typedef struct s_game
 {
-	int			flag[6];
+	int			flag[7];
 	int			count;
 	int			fd;
 	char		*str;
 	size_t		size;
 	t_stack		a;
 	t_stack		b;
+	int			argc;
+	char		**argv2;
 }				t_game;
 
 void			ft_lecteur(char *inst, t_game *game);
@@ -53,4 +55,6 @@ char			**createaction(void);
 void			optionv(t_game *game, char **action, int *list, int count);
 void			ft_stop5(void);
 void			ft_stop4(char *str, t_game *game);
+char			**game_char(int argc, char **argv, t_game *game);
+void			freechar(char **argv2);
 #endif

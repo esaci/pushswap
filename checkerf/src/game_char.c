@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../bibz/libpush.h"
+#include "../bibz/libcheck.h"
 
 void	freechar(char **argv2)
 {
@@ -87,7 +87,7 @@ char	**ft_show(char **str, t_game *game)
 	int	count;
 
 	count = 0;
-	game->flag[4] = 1;
+	game->flag[6] = 1;
 	while (str[count])
 		count++;
 	game->argc = count;
@@ -101,7 +101,7 @@ char	**game_char(int argc, char **argv, t_game *game)
 
 	count = 0;
 	count2 = 0;
-	game->flag[4] = 0;
+	game->flag[6] = 0;
 	while (argv[count])
 	{
 		count2 = 0;
