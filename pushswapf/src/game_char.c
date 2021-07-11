@@ -12,7 +12,7 @@
 
 #include "../bibz/libpush.h"
 
-void 			freechar(char **argv2)
+void	freechar(char **argv2)
 {
 	int	count;
 

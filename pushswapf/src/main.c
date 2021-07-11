@@ -61,6 +61,10 @@ void	game_init(char **argv, t_game *game)
 {
 	int		i;
 
+	game->rac = 0;
+	game->rrac = 0;
+	game->rbc = 0;
+	game->rrbc = 0;
 	i = 0;
 	while (i < 4)
 		game->flag[i++] = 0;
@@ -82,10 +86,6 @@ int	main(int argc, char **argv)
 	t_game	game;
 	char	**argv2;
 
-	game.rac = 0;
-	game.rrac = 0;
-	game.rbc = 0;
-	game.rrbc = 0;
 	game.argc = argc;
 	if (game.argc >= 2)
 	{

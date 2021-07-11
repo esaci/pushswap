@@ -73,5 +73,5 @@ void			finupd(char *str2, int i, int y, t_game *game);
 void			ft_stop2(char *str);
 void			ft_stop3(char *str, t_game *game);
 char			**game_char(int argc, char **argv, t_game *game);
-void 			freechar(char **argv2);
+void			freechar(char **argv2);
 #endif
