@@ -59,7 +59,7 @@ int	main(int argc, char **argv)
 	game.argc = argc;
 	if (argc >= 2)
 	{
-		game.argv2 = argv;
+		game.argv2 = game_char(argc, argv, &game);
 		game_init(&game, 0);
 		if (!game.a.ptr || !doublon_int(&game.a))
 			ft_stop4("3", &game);
